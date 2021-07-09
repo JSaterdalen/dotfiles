@@ -6,7 +6,7 @@
 # Replace all instances of <Device Name> with the name of your desired audio output device
 
 # @raycast.schemaVersion 1
-# @raycast.title Switch Audio to <Device Name>
+# @raycast.title Switch Audio to AirPods Pro
 # @raycast.mode silent
 
 # @raycast.packageName Audio
