@@ -76,6 +76,7 @@ cask "visual-studio-code"
 cask "yacreader"
 cask "zoom"
 # --- drivers
+cask "caldigit-thunderbolt-charging"
 cask "logitech-g-hub"
 cask "logitech-options"
 # --- fonts
