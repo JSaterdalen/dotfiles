@@ -28,7 +28,6 @@ mas "Compressor", id: 424390742
 mas "CopyClip", id: 1020812363
 mas "Drafts", id: 1435957248
 mas "Final Cut Pro", id: 424389933
-mas "GeoTag", id: 1465180184
 mas "Motion", id: 434290957
 mas "The Unarchiver", id: 425424353
 mas "Things", id: 904280696
@@ -36,7 +35,7 @@ mas "Toggl Track", id: 957734279
 
 # --- Brew Casks --- 'brew install --cask'
 cask "1password"
-cask "a-better-finder-rename"
+# cask "a-better-finder-rename" # this is v11; I'm on 10
 cask "ableton-live-suite10"
 cask "adapter" # media converter
 cask "authy"
@@ -46,10 +45,11 @@ cask "codekit"
 cask "cryptomator"
 cask "firefox"
 cask "focusrite-control"
-cask "hiddenbar"
+cask "geotag"
 cask "geotag-photos-pro"
 cask "github"
 cask "google-chrome"
+cask "hiddenbar"
 cask "iina"
 cask "imageoptim"
 cask "iterm2"
@@ -60,6 +60,7 @@ cask "muzzle" # silence notifications while screen sharing
 cask "obsidian"
 cask "omnidisksweeper" # disk storage analyzer
 cask "private-internet-access"
+cask "raycast"
 cask "rectangle" # window management (open-source version of Magnet)
 cask "resilio-sync"
 cask "rocket" # emoji app
