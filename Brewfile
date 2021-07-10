@@ -58,6 +58,7 @@ cask "ledger-live"
 cask "maccy" # clipboard manager
 cask "musicbrainz-picard"
 cask "muzzle" # silence notifications while screen sharing
+cask "obinskit"
 cask "obsidian"
 cask "omnidisksweeper" # disk storage analyzer
 cask "plexamp"
