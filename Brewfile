@@ -77,6 +77,7 @@ cask "yacreader"
 cask "zoom"
 # --- drivers
 cask "caldigit-thunderbolt-charging"
+cask "focusrite-clarett-thunderbolt"
 cask "logitech-g-hub"
 cask "logitech-options"
 # --- fonts
