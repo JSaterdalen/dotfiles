@@ -25,7 +25,6 @@ mas "Affinity Photo", id: 824183456
 mas "Amphetamine", id: 937984704
 mas "Bear", id: 1091189122
 mas "Compressor", id: 424390742
-mas "CopyClip", id: 1020812363
 mas "Drafts", id: 1435957248
 mas "Final Cut Pro", id: 424389933
 mas "Motion", id: 434290957
