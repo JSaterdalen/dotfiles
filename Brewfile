@@ -59,6 +59,7 @@ cask "musicbrainz-picard"
 cask "muzzle" # silence notifications while screen sharing
 cask "obsidian"
 cask "omnidisksweeper" # disk storage analyzer
+cask "plexamp"
 cask "private-internet-access"
 cask "raycast"
 cask "rectangle" # window management (open-source version of Magnet)
