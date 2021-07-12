@@ -42,6 +42,10 @@ export NVM_DIR="$HOME/.nvm"
 # theme - see https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 plugins=(
   git
+  npm
+  pyenv
+  sdx
+  sfdx
   zsh-autosuggestions
   z
   )
