@@ -71,6 +71,7 @@ cask "hiddenbar"
 cask "iina"
 cask "imageoptim"
 cask "iterm2"
+cask "kap"
 cask "karabiner-elements"
 cask "krisp"
 cask "maccy" # clipboard manager
