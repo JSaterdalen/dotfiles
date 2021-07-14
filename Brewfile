@@ -3,6 +3,7 @@ tap "homebrew/cask"
 tap "homebrew/cask-drivers"
 tap "homebrew/cask-versions"
 tap "homebrew/cask-fonts"
+tap "buo/cask-upgrade"
 tap "federico-terzi/espanso"
 tap "romkatv/powerlevel10k"
 
