@@ -21,67 +21,77 @@ brew "sqlite"
 brew "powerlevel10k" # zsh package/theme
 
 # --- Mac App Store apps --- 'mas install'
-mas "Affinity Designer", id: 824171161
-mas "Affinity Photo", id: 824183456
 mas "Amphetamine", id: 937984704
 mas "Bear", id: 1091189122
-mas "Compressor", id: 424390742
 mas "Drafts", id: 1435957248
-mas "Final Cut Pro", id: 424389933
-mas "Motion", id: 434290957
 mas "The Unarchiver", id: 425424353
 mas "Things", id: 904280696
 mas "Toggl Track", id: 957734279
 
 # --- Brew Casks --- 'brew install --cask'
-cask "1password"
-# cask "a-better-finder-rename" # this is v11; I'm on 10
+
+# --- PERSONAL ONLY ---
+mas "Affinity Designer", id: 824171161
+mas "Affinity Photo", id: 824183456
+mas "Compressor", id: 424390742
+mas "Final Cut Pro", id: 424389933
+mas "Motion", id: 434290957
+
 cask "ableton-live-suite10"
-cask "adapter" # media converter
-cask "authy"
-cask "appcleaner"
+cask "adapter"
 cask "balenaetcher"
 cask "codekit"
-cask "cryptomator"
-cask "firefox"
 cask "focusrite-control"
 cask "geotag"
 cask "geotag-photos-pro"
+cask "ledger-live"
+cask "musicbrainz-picard"
+cask "obinskit"
+cask "private-internet-access"
+cask "yacreader"
+# --- drivers
+cask "caldigit-thunderbolt-charging"
+cask "focusrite-clarett-thunderbolt"
+
+  # --- WORK ONLY ---
+cask "microsoft-teams"
+cask "onedrive"
+cask "slack"
+
+  # --- BASE INSTALL ---
+cask "1password"
+# cask "a-better-finder-rename" # this is v11; I'm on 10
+cask "authy"
+cask "appcleaner"
+cask "cryptomator"
+cask "firefox"
 cask "github"
-cask "google-chrome"
+# cask "google-chrome"
 cask "hiddenbar"
 cask "iina"
 cask "imageoptim"
 cask "iterm2"
 cask "karabiner-elements"
 cask "krisp"
-cask "ledger-live"
 cask "maccy" # clipboard manager
-cask "musicbrainz-picard"
+cask "microsoft-edge"
 cask "muzzle" # silence notifications while screen sharing
-cask "obinskit"
 cask "obsidian"
 cask "omnidisksweeper" # disk storage analyzer
 cask "plexamp"
-cask "private-internet-access"
 cask "raycast"
 cask "rectangle" # window management (open-source version of Magnet)
 cask "resilio-sync"
 cask "rocket" # emoji app
-cask "sfdx"
 cask "signal"
 cask "sketch"
-cask "slack"
 cask "soundsource"
 cask "spotify"
 cask "typora"
 cask "via" # QMK keyboard gui
 cask "visual-studio-code"
-cask "yacreader"
 cask "zoom"
 # --- drivers
-cask "caldigit-thunderbolt-charging"
-cask "focusrite-clarett-thunderbolt"
 cask "logitech-g-hub"
 cask "logitech-options"
 # --- fonts
