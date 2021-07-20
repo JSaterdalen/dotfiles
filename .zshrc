@@ -19,7 +19,7 @@ alias edit="code ~/.zshrc"
 alias gwen="ssh josh@192.168.1.6"
 alias gwenmnt="sshfs josh@192.168.1.6:/ ./mnt/gwen"
 # locations
-alias proj="cd '$HOME/Resilio Sync/Get Things Done/01 - Projects'"
+alias proj="cd '$HOME/Resilio Sync/Getting Things Done/01 - Projects'"
 # jekyll
 alias jks="bundle exec jekyll serve --livereload"
 
@@ -53,6 +53,7 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 # ZSH_THEME="powerlevel10k/powerlevel10k"
 source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
+setopt HIST_IGNORE_SPACE
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
