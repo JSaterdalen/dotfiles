@@ -64,7 +64,7 @@ plugins=(
   )
 source $ZSH/oh-my-zsh.sh
 # ZSH_THEME="powerlevel10k/powerlevel10k"
-source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
+source ~/.oh-my-zsh/custom/themes/powerlevel10k/powerlevel10k.zsh-theme
 setopt HIST_IGNORE_SPACE
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
