@@ -63,7 +63,6 @@ plugins=(
   zsh-syntax-highlighting
   )
 source $ZSH/oh-my-zsh.sh
-# ZSH_THEME="powerlevel10k/powerlevel10k"
 source ~/.oh-my-zsh/custom/themes/powerlevel10k/powerlevel10k.zsh-theme
 setopt HIST_IGNORE_SPACE
 
