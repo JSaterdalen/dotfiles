@@ -15,6 +15,8 @@ export ZSH="$HOME/.oh-my-zsh"
 
 # --- aliases --- #
 alias edit="code ~/.zshrc"
+alias myip="curl http://ipecho.net/plain; echo"
+
 # ssh aliases
 alias gwen="ssh josh@192.168.1.6"
 alias gwenmnt="sshfs josh@192.168.1.6:/ ./mnt/gwen"
@@ -22,6 +24,16 @@ alias gwenmnt="sshfs josh@192.168.1.6:/ ./mnt/gwen"
 alias proj="cd '$HOME/Resilio Sync/Getting Things Done/01 - Projects'"
 # jekyll
 alias jks="bundle exec jekyll serve --livereload"
+
+# SFDX
+sfopen () { sfdx force:org:open -u $1; exit; }
+
+
+# functions
+mcd () {
+    mkdir -p $1
+    cd $1
+}
 
 
 # home video project
