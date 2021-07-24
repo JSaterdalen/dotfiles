@@ -6,8 +6,9 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # environment variables
-export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH
+PATH=$HOME/bin:$HOME/bin/scripts:/usr/local/bin:/usr/local/sbin:$PATH
 export EDITOR=code
+export sfdir=$HOME/sfdx
 
 
 # Path to your oh-my-zsh installation.
@@ -26,7 +27,14 @@ alias proj="cd '$HOME/Resilio Sync/Getting Things Done/01 - Projects'"
 alias jks="bundle exec jekyll serve --livereload"
 
 # SFDX
-sfopen () { sfdx force:org:open -u $1; exit; }
+sfo () { sfdx force:org:open -u $1; }
+sfc () {
+    cd $HOME/sfdx/$1
+    code . 
+    sfdx force:org:open -u $1
+    clear
+}
+
 
 
 # functions
