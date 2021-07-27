@@ -53,13 +53,14 @@ export SCENES_YAML="${MEDIAGOBLIN_METADATA}/scenes.yaml"
 export CSV_URL="https://docs.google.com/spreadsheets/d/1JKp6YT5-dIFD9aIqZhU1Tp-mi-trNCGGE97xakWXDUY/export?format=csv&id=1JKp6YT5-dIFD9aIqZhU1Tp-mi-trNCGGE97xakWXDUY&gid=401061703"
 
 # pyenv
-eval "$(pyenv init -)"
+# eval "$(pyenv init -)"
 # node version manager
 export NVM_DIR="$HOME/.nvm"
   [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
   [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 # theme - see https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+ZSH_THEME="powerlevel10k/powerlevel10k"
 plugins=(
   git
   npm
@@ -71,7 +72,6 @@ plugins=(
   zsh-syntax-highlighting
   )
 source $ZSH/oh-my-zsh.sh
-source ~/.oh-my-zsh/custom/themes/powerlevel10k/powerlevel10k.zsh-theme
 setopt HIST_IGNORE_SPACE
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
