@@ -6,13 +6,12 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # environment variables
-PATH=$HOME/bin:$HOME/bin/scripts:/usr/local/bin:/usr/local/sbin:$PATH
+export ZSH="$HOME/.oh-my-zsh"
 export EDITOR=code
 export sfdir=$HOME/sfdx
+PATH=$HOME/bin:$HOME/bin/scripts:/usr/local/bin:/usr/local/sbin:$PATH
 
 
-# Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
 
 # --- aliases --- #
 alias edit="code ~/.zshrc"
@@ -53,7 +52,7 @@ export SCENES_YAML="${MEDIAGOBLIN_METADATA}/scenes.yaml"
 export CSV_URL="https://docs.google.com/spreadsheets/d/1JKp6YT5-dIFD9aIqZhU1Tp-mi-trNCGGE97xakWXDUY/export?format=csv&id=1JKp6YT5-dIFD9aIqZhU1Tp-mi-trNCGGE97xakWXDUY&gid=401061703"
 
 # pyenv
-# eval "$(pyenv init -)"
+eval "$(pyenv init -)"
 # node version manager
 export NVM_DIR="$HOME/.nvm"
   [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
@@ -64,12 +63,11 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 plugins=(
   git
   npm
-  pyenv
   sdk
   sfdx
   zsh-autosuggestions
-  z
   zsh-syntax-highlighting
+  z
   )
 source $ZSH/oh-my-zsh.sh
 setopt HIST_IGNORE_SPACE
