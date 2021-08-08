@@ -21,7 +21,7 @@ alias myip="curl http://ipecho.net/plain; echo"
 alias gwen="ssh josh@192.168.1.6"
 alias gwenmnt="sshfs josh@192.168.1.6:/ ./mnt/gwen"
 # locations
-alias proj="cd '$HOME/Resilio Sync/Getting Things Done/01 - Projects'"
+alias proj="cd '$HOME/Resilio Sync/gtd/01 - Projects'"
 # jekyll
 alias jks="bundle exec jekyll serve --livereload"
 
