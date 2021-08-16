@@ -12,6 +12,7 @@ tap "romkatv/powerlevel10k"
 
 # --- 'brew install'
 brew "espanso"
+brew "gh"
 brew "git"
 brew "mas" #https://github.com/mas-cli/mas
 brew "nvm" # node version manager
