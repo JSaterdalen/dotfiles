@@ -1,0 +1,83 @@
+#!/usr/bin/env bash
+
+set -e
+
+initAlias() {
+    read -p "Org nickname (no spaces): " NAME
+    read -p "prod [p] or sandbox [s]? " -n 1 ans
+    echo
+    if [ "$ans" == "s" ]; then
+        echo "What kind of sandbox?"
+        echo
+        echo "1) Full"
+        echo "2) Partial"
+        echo "3) Dev"
+        echo "4) type your own"
+        read -s -n 1 CHOICE
+        case "$CHOICE" in
+            1) ORGTYPE="full"
+                ;;
+            2) ORGTYPE="part"
+                ;;
+            3) ORGTYPE="dev"
+                ;;
+            4) # custom
+                read -p "sandbox type: " ORGTYPE
+                ;;
+        esac
+        INSTURL="https://test.salesforce.com"
+    else
+        ORGTYPE="prod"
+        INSTURL="https://login.salesforce.com"
+    fi
+    ALIASNAME="${NAME}-${ORGTYPE}"
+    echo "Your org alias is $ALIASNAME"
+    echo
+    echo "Please sign in to this org in the new browser tab that opens."
+    echo
+    sleep 3
+    echo "Authorizing..."
+    echo
+    sfdx force:auth:web:login --setalias $ALIASNAME -r $INSTURL
+    echo "Let's test it out..."
+    sleep 2
+    sfdx force:org:open -u $ALIASNAME
+}
+
+initProject() {
+    echo "Moving to sfdx directory..."
+    echo
+    cd ~/sfdx
+    
+    if [[ -z "$ALIASNAME" ]]; then 
+        sfdx alias:list
+        read -p "What alias is the project for? " ALIASNAME
+    fi
+    
+    sfdx force:project:create -n $ALIASNAME --manifest &&
+    echo "Created project folder $ALIASNAME"
+    echo
+    cd $ALIASNAME &&
+    sfdx config:set defaultusername=$ALIASNAME &&
+    echo "Retreiving metadata..."
+    echo
+    sfdx force:source:retrieve -x manifest/package.xml && 
+    echo "Metadata ready. Opening VSCode."
+    echo
+    code .
+}
+
+# Get the options
+while getopts ":ap" option; do
+    case $option in
+        a) # set an alias
+            initAlias
+            ;;
+        p) # setup an SFDX project with VS Code
+            initProject
+            ;;
+       \?) # Invalid option
+            echo "Error: Invalid option"
+            exit;;
+    esac
+done
