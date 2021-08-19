@@ -1,0 +1,120 @@
+#!/usr/bin/env bash
+
+# set -eo pipefail
+
+mountRemote() {
+    if [[ -z "$SHARE" ]]; then 
+        getShare 
+    fi
+
+    if [[ -z "$OP_SESSION_saterdalen" ]]; then 
+        getOPSession
+    fi
+    
+    read -s -p "pass: " PASS
+    echo
+    # read -s -p "syno sudo: " SYNO
+    SYNO=$(op get item mqrsargv65gofgcia2fw35gphy --fields password)
+    echo
+
+    ssh -T josh@192.168.1.5 << EOF
+    echo $SYNO | sudo -Sv &> /dev/null
+    if sudo synoshare --is_accessible $SHARE | grep -q 'is 0'; then 
+        echo "Not mounted. Mounting..."
+        echo
+        if sudo synoshare --enc_mount $SHARE $PASS | grep -q 'not matched'; then
+            exit
+        else
+            echo "Successfully mounted $SHARE."
+        fi
+    else
+        echo "$SHARE is already mounted."
+    fi
+EOF
+}
+
+mountLocal() {
+    if [[ -z "$SHARE" ]]; then 
+        getShare
+    fi
+
+    if [[ -z "$OP_SESSION_saterdalen" ]]; then 
+        getOPSession
+    fi
+
+    # if is_mounted $SHARE; then
+    #     echo "$SHARE already mounted"
+    # else
+    #     echo "Mounting $SHARE"
+    #     mkdir -p $HOME/mnt/$SHARE
+    #     LOCAL=$(op get item szebn3jowfktte6pi5cboaco5y --fields password)
+    #     echo $LOCAL | sudo -S mount -t cifs -o rw,uid=josh,gid=josh,credentials=$HOME/.sharelogin //192.168.1.5/$SHARE $HOME/mnt/$SHARE 2> /dev/null
+    # fi
+    
+    echo "Mounting $SHARE"
+    mkdir -p $HOME/mnt/$SHARE
+    LOCAL=$(op get item szebn3jowfktte6pi5cboaco5y --fields password)
+    echo $LOCAL | sudo -S mount -t cifs -o rw,uid=josh,gid=josh,credentials=$HOME/.sharelogin //192.168.1.5/$SHARE $HOME/mnt/$SHARE 2> /dev/null
+    nautilus $HOME/mnt/$SHARE & disown && exit
+}
+
+unmountShare() {
+    # read -p "share: " SHARE
+    # read -s -p "syno sudo: " SYNO
+    if [[ -z "$SHARE" ]]; then 
+        getShare
+    fi
+
+    if [[ -z "$OP_SESSION_saterdalen" ]]; then 
+        getOPSession
+    fi
+    echo
+
+    echo "Unmounting locally..."
+    sudo umount $HOME/mnt/$SHARE &> /dev/null
+    echo "Unmounted $SHARE locally..."
+
+    SYNO=$(op get item mqrsargv65gofgcia2fw35gphy --fields password)
+    echo "Connecting to Rey..."
+    ssh -T josh@192.168.1.5 << EOF
+    echo "Connected."
+    echo $SYNO | sudo -Sv &> /dev/null
+    if sudo synoshare --is_accessible $SHARE | grep -q 'is 0'; then 
+        echo "$SHARE is not mounted."
+    else
+        echo "Unmounting $SHARE on Rey..."
+        sudo synoshare --enc_unmount $SHARE
+        echo "Unmounted $SHARE."
+    fi
+EOF
+}
+
+getShare() {
+    read -p "share: " SHARE
+}
+
+getOPSession() {
+    eval $(op signin saterdalen)
+}
+
+is_mounted() {
+    mount | awk -v DIR="$HOME/mnt/$SHARE" '{if ($3 == DIR) { exit 0}} ENDFILE{exit -1}'
+}
+
+# Get the options
+while getopts ":ulm" option; do
+    case $option in
+        u) # unmount remote and local
+            unmountShare
+            ;;
+        m) # mount remote
+            mountRemote
+            ;;
+        l) # mount local
+            mountLocal
+            ;;
+       \?) # Invalid option
+            echo "Error: Invalid option"
+            exit;;
+    esac
+done
