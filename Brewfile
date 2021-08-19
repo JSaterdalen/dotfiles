@@ -52,7 +52,7 @@ cask "private-internet-access"
 cask "yacreader"
 # --- drivers
 cask "caldigit-thunderbolt-charging"
-cask "focusrite-clarett-thunderbolt"
+cask "focusrite-thunderbolt"
 
   # --- WORK ONLY ---
 cask "microsoft-teams"
