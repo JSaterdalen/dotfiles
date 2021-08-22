@@ -8,39 +8,12 @@ fi
 # environment variables
 export ZSH="$HOME/.oh-my-zsh"
 export EDITOR=code
-export sfdir=$HOME/sfdx
-PATH=$HOME/bin:$HOME/bin/scripts:/usr/local/bin:/usr/local/sbin:$PATH
+export SFDIR=$HOME/sfdx
+export PATH=$HOME/bin:$HOME/bin/scripts:/usr/local/bin:/usr/local/sbin:$PATH
 
 
 
 # --- aliases --- #
-alias edit="code ~/.zshrc"
-alias myip="curl http://ipecho.net/plain; echo"
-
-# ssh aliases
-alias gwen="ssh josh@192.168.1.6"
-alias gwenmnt="sshfs josh@192.168.1.6:/ ./mnt/gwen"
-# locations
-alias proj="cd '$HOME/Resilio Sync/gtd/01 - Projects'"
-# jekyll
-alias jks="bundle exec jekyll serve --livereload"
-
-# SFDX
-sfo () { sfdx force:org:open -u $1; }
-sfc () {
-    cd $HOME/sfdx/$1
-    code . 
-    sfdx force:org:open -u $1
-    clear
-}
-
-
-
-# functions
-mcd () {
-    mkdir -p $1
-    cd $1
-}
 
 
 # home video project
@@ -65,8 +38,8 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 ZSH_THEME="powerlevel10k/powerlevel10k"
 plugins=(
   git
-  npm
-  sdk
+#   npm
+#   sdk
   sfdx
   zsh-autosuggestions
   zsh-syntax-highlighting
@@ -74,6 +47,8 @@ plugins=(
   )
 source $ZSH/oh-my-zsh.sh
 setopt HIST_IGNORE_SPACE
+
+source $HOME/.zsh_aliases
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

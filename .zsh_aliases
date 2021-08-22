@@ -1,0 +1,41 @@
+alias ..="cd .."
+alias l="ls -AlF"
+alias la="ls -Ax"
+# alias l='ls -CF'
+alias edit="code ~/.zshrc"
+alias sc="source ~/.zshrc"
+alias myip="curl http://ipecho.net/plain; echo"
+alias dc="docker-compose"
+alias -s {md,json,html,py,sh,applescript,js}=code
+
+# ssh aliases
+alias gwen="ssh josh@192.168.1.6"
+alias gwenmnt="sshfs josh@192.168.1.6:/ ./mnt/gwen"
+# locations
+alias proj="cd '$HOME/Resilio Sync/gtd/01 - Projects'"
+# jekyll
+alias jks="bundle exec jekyll serve --livereload"
+
+# functions
+mkcd() {
+  mkdir "$1"
+  cd "$1"
+}
+
+# SFDX
+if [[ -v commands[sfdx] ]]; then
+sfo () {
+    if [[ -z "$1" ]]; then 
+        sfdx alias:list
+    else
+        sfdx force:org:open -u $1; 
+    fi
+}
+
+sfc () {
+    cd $HOME/sfdx/$1
+    code . 
+    sfdx force:org:open -u $1
+    clear
+}
+fi
