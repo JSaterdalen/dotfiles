@@ -11,11 +11,6 @@ export EDITOR=code
 export SFDIR=$HOME/sfdx
 export PATH=$HOME/bin:$HOME/bin/scripts:/usr/local/bin:/usr/local/sbin:$PATH
 
-
-
-# --- aliases --- #
-
-
 # home video project
 export RAW_VIDEOS_DIR="${HOME}/home-video/videos-raw"
 export PROCESSED_CLIPS_DIR="${HOME}/home-video/videos-processed"
