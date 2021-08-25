@@ -1,3 +1,4 @@
+# general UNIX
 alias ..="cd .."
 alias l="ls -AlF"
 alias la="ls -Ax"
@@ -12,7 +13,10 @@ alias -s {md,json,html,py,sh,applescript,js}=code
 alias gwen="ssh josh@192.168.1.6"
 alias gwenmnt="sshfs josh@192.168.1.6:/ ./mnt/gwen"
 # locations
-alias proj="cd '$HOME/Resilio Sync/gtd/01 - Projects'"
+alias res="cd $RESILIO_DIR"
+alias gtd="cd $RESILIO_DIR/gtd"
+alias inbox="cd $RESILIO_DIR/inbox"
+alias proj="cd '$RESILIO_DIR/gtd/01 - Projects'"
 # jekyll
 alias jks="bundle exec jekyll serve --livereload"
 

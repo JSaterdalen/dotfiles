@@ -9,6 +9,7 @@ fi
 export ZSH="$HOME/.oh-my-zsh"
 export EDITOR=code
 export SFDIR=$HOME/sfdx
+export RESILIO_DIR="${HOME}/sync"
 export PATH=$HOME/bin:$HOME/bin/scripts:/usr/local/bin:/usr/local/sbin:$PATH
 
 # home video project
