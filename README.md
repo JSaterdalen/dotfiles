@@ -97,6 +97,7 @@ I have used Zsh for years and really liked it. Recently I've switched to Fish, a
 
 After running `install.sh` there are still a couple of things that need to be done.
 
+- Install java with [sdkman][sdkman]
 - Add machine-specific configs as needed. (see Machine-specific Configs below)
 - Set up iTerm2 or Alacritty profile (see details below).
 - Complete [Brew Bundle][brew-bundle] with `brew bundle install`
@@ -405,6 +406,7 @@ Copyright &copy; 2014–2020 Joshua Steele. [MIT License][license]
 [react]: https://reactjs.org/
 [ruby]: https://www.ruby-lang.org/en
 [screenshot]: https://res.cloudinary.com/dnkvsijzu/image/upload/v1584547844/screenshots/dotfiles-mar-2020_a5p5do.png
+[sdkman]: https://sdkman.io/install
 [solarized]: https://github.com/altercation/solarized
 [starship]: https://starship.rs/
 [tender]: https://github.com/jacoborus/tender.vim
