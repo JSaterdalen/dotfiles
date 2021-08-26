@@ -48,7 +48,10 @@ HIST_STAMPS="yyyy-mm-dd"
 
 # asdf
 . $HOME/.asdf/asdf.sh
-. $HOME/.asdf/completions/asdf.bash
+# append completions to fpath
+fpath=(${ASDF_DIR}/completions $fpath)
+# initialise completions with ZSH's compinit
+autoload -Uz compinit && compinit
 
 # Include local settings
 [[ -f ~/.zshrc.local ]] && . ~/.zshrc.local
