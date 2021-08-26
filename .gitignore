@@ -1,22 +1,6 @@
-# Folder view configuration files
-.DS_Store
-Desktop.ini
-
-# Thumbnail cache files
-._*
-Thumbs.db
-
-# Files that might appear on external disks
-.Spotlight-V100
-.Trashes
-
-# Private Information
-.private
-.gitconfig
-
-# resilio sync
-.sync/
-Icon?
+.gitconfig.local
+.zshrc.local
+Brewfile.lock.json
 
 # TODO: move private info in espanso to separate file
 espanso
