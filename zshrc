@@ -1,16 +1,23 @@
+# ~/.zshrc
+
+# environment variables
+export PATH=$HOME/bin:$HOME/bin/scripts:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CACHE_HOME="$HOME/.cache"
+export DOTFILES="$HOME/dotfiles"
+HOST_NAME=$(scutil --get HostName)
+export HOST_NAME
+export EDITOR=code
+export SFDX_DIR=$HOME/sfdx
+export RESILIO_DIR="${HOME}/sync"
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
-
-# environment variables
-export ZSH="$HOME/.oh-my-zsh"
-export EDITOR=code
-export SFDIR=$HOME/sfdx
-export RESILIO_DIR="${HOME}/sync"
-export PATH=$HOME/bin:$HOME/bin/scripts:/usr/local/bin:/usr/local/sbin:$PATH
 
 # home video project
 export RAW_VIDEOS_DIR="${HOME}/home-video/videos-raw"
@@ -30,21 +37,21 @@ export NVM_DIR="$HOME/.nvm"
 # rbenv
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
-# theme - see https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="powerlevel10k/powerlevel10k"
-plugins=(
-  git
-#   npm
-#   sdk
-  sfdx
-  zsh-autosuggestions
-  zsh-syntax-highlighting
-  z
-  )
-source $ZSH/oh-my-zsh.sh
-setopt HIST_IGNORE_SPACE
+. $DOTFILES/zsh/oh-my-zsh # TODO replace omz with manual config
+. $DOTFILES/zsh/aliases
+. $DOTFILES/zsh/functions
+. $DOTFILES/zsh/plugins
 
-source $HOME/.zsh_aliases
+setopt HIST_IGNORE_SPACE
+HISTFILE=~/.zsh_history
+HIST_STAMPS="yyyy-mm-dd"
+
+# asdf
+. $HOME/.asdf/asdf.sh
+. $HOME/.asdf/completions/asdf.bash
+
+# Include local settings
+[[ -f ~/.zshrc.local ]] && . ~/.zshrc.local
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

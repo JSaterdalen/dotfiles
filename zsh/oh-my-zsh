@@ -1,0 +1,16 @@
+export ZSH=$HOME/.oh-my-zsh
+# export UPDATE_ZSH_DAYS=7
+# COMPLETION_WAITING_DOTS="true"
+
+ZSH_THEME="powerlevel10k/powerlevel10k"
+
+plugins=(
+  git
+  # npm
+  # sdk
+  # sfdx
+  zsh-autosuggestions
+  z
+  )
+
+. $ZSH/oh-my-zsh.sh

@@ -1,6 +1,0 @@
-{
-  "files.exclude": {
-    ".sync": true,
-    "Icon*": true
-  }
-}
