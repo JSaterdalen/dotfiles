@@ -1,0 +1,9 @@
+# --- WORK ONLY ---
+mas "Toggl Track", id: 957734279
+
+cask "azure-data-studio"
+cask "box-drive"
+cask "box-tools"
+cask "microsoft-teams"
+cask "onedrive"
+cask "slack"

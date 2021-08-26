@@ -1,0 +1,23 @@
+# --- PERSONAL ONLY ---
+mas "Affinity Designer", id: 824171161
+mas "Affinity Photo", id: 824183456
+# mas "Compressor", id: 424390742
+# mas "Final Cut Pro", id: 424389933
+# mas "Motion", id: 434290957
+
+# cask "a-better-finder-rename" # this is v11; I'm on 10
+cask "ableton-live-suite10"
+cask "adapter"
+cask "balenaetcher"
+cask "codekit"
+cask "focusrite-control"
+cask "geotag"
+cask "geotag-photos-pro"
+cask "ledger-live"
+cask "musicbrainz-picard"
+cask "obinskit"
+cask "private-internet-access"
+cask "yacreader"
+# --- drivers
+cask "caldigit-thunderbolt-charging"
+cask "focusrite-thunderbolt"
