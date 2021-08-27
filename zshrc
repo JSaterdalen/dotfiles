@@ -1,7 +1,7 @@
 # ~/.zshrc
 
 # environment variables
-export PATH=$HOME/bin:$HOME/bin/scripts:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin
+export PATH=/opt/homebrew/bin:$HOME/bin:$HOME/bin/scripts:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
@@ -27,16 +27,6 @@ export SCENES_CSV="${MEDIAGOBLIN_METADATA}/scenes.csv"
 export SCENES_YAML="${MEDIAGOBLIN_METADATA}/scenes.yaml"
 export CSV_URL="https://docs.google.com/spreadsheets/d/1JKp6YT5-dIFD9aIqZhU1Tp-mi-trNCGGE97xakWXDUY/export?format=csv&id=1JKp6YT5-dIFD9aIqZhU1Tp-mi-trNCGGE97xakWXDUY&gid=401061703"
 
-# pyenv
-eval "$(pyenv init -)"
-# node version manager
-export NVM_DIR="$HOME/.nvm"
-  [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-  [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-
-# rbenv
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-
 . $DOTFILES/zsh/oh-my-zsh # TODO replace omz with manual config
 . $DOTFILES/zsh/aliases
 . $DOTFILES/zsh/functions
@@ -46,8 +36,12 @@ setopt HIST_IGNORE_SPACE
 HISTFILE=~/.zsh_history
 HIST_STAMPS="yyyy-mm-dd"
 
-# asdf
+##############
+##   asdf
+##############
 . $HOME/.asdf/asdf.sh
+# set JAVA_HOME
+. ~/.asdf/plugins/java/set-java-home.zsh
 # append completions to fpath
 fpath=(${ASDF_DIR}/completions $fpath)
 # initialise completions with ZSH's compinit
@@ -59,6 +53,4 @@ autoload -Uz compinit && compinit
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"

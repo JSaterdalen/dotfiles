@@ -6,9 +6,6 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 
 plugins=(
   git
-  # npm
-  # sdk
-  # sfdx
   zsh-autosuggestions
   z
   )
