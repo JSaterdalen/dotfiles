@@ -1,7 +1,7 @@
 # ~/.zshrc
 
 # environment variables
-export PATH=/opt/homebrew/bin:$HOME/bin:$HOME/bin/scripts:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin
+export PATH=$HOME/bin:$HOME/bin/scripts:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
@@ -11,6 +11,14 @@ export HOST_NAME
 export EDITOR=code
 export SFDX_DIR=$HOME/sfdx
 export RESILIO_DIR="${HOME}/sync"
+
+# Mac CPU
+CPU=$(uname -p)
+if [[ "$CPU" == "arm" ]]; then
+    export PATH="/opt/homebrew/bin:$PATH"
+else
+    export PATH="/usr/local/bin:$PATH"
+fi
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
