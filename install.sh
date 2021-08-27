@@ -48,11 +48,13 @@ if [ -z "$XDG_CONFIG_HOME" ]; then
 fi
 
 home_files=(
-"asdfrc"
+# "asdfrc"
 # "default-npm-packages"
 "gitconfig"
 "gitignore_global"
 "p10k.zsh"
+"tool-versions"
+"zprofile"
 "zshrc"
 )
 
@@ -95,6 +97,8 @@ if [ -e "${HOME}/Brewfile" ]; then
 fi
 dotfiles_echo "-> Linking ${DOTFILES}/Brewfile to ${HOME}/Brewfile..."
 ln -nfs "${DOTFILES}/Brewfile" "${HOME}/Brewfile"
+
+# TODO append machine specific brewfile to base file
 
 # dotfiles_echo "-> Linking config directories..."
 # for item in "${config_dirs[@]}"; do
