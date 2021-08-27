@@ -6,18 +6,21 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
 export DOTFILES="$HOME/dotfiles"
-HOST_NAME=$(scutil --get HostName)
-export HOST_NAME
 export EDITOR=code
 export SFDX_DIR=$HOME/sfdx
 export RESILIO_DIR="${HOME}/sync"
 
 # Mac CPU
-CPU=$(uname -p)
-if [[ "$CPU" == "arm" ]]; then
-    export PATH="/opt/homebrew/bin:$PATH"
-else
-    export PATH="/usr/local/bin:$PATH"
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  HOST_NAME=$(scutil --get HostName)
+  export HOST_NAME
+  
+  CPU=$(uname -p)
+  if [[ "$CPU" == "arm" ]]; then
+      export PATH="/opt/homebrew/bin:$PATH"
+  else
+      export PATH="/usr/local/bin:$PATH"
+  fi
 fi
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
