@@ -14,14 +14,23 @@ dotfiles_echo() {
 }
 
 dotfiles_backup() {
-  if ! command -v gcp >/dev/null || ! command -v gdate >/dev/null; then
-    dotfiles_echo "GNU cp and date commands are required. Please install via Homebrew coreutils: brew install coreutils"
-    exit 1
-  elif [ -d "$1" ]; then
-    mv -v "$1" "${1}_bak_$(gdate +"%Y%m%d%3N")"
-  else
-    gcp -f --backup=numbered "$1" "$1"
+  if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+  # TODO see if this will cover macOS also
+    if [ -d "$1" ]; then
+      mv -v "$1" "${1}_bak_$(date +"%d-%m-%y-%T")"
+    else
+      cp -f --backup=numbered "$1" "$1"
+  elif [[ "$OSTYPE" == "darwin"* ]]; then
+    if ! command -v gcp >/dev/null || ! command -v gdate >/dev/null; then
+      dotfiles_echo "GNU cp and date commands are required. Please install via Homebrew coreutils: brew install coreutils"
+      exit 1
+    elif [ -d "$1" ]; then
+      mv -v "$1" "${1}_bak_$(gdate +"%Y%m%d%3N")"
+    else
+      gcp -f --backup=numbered "$1" "$1"
+    fi
   fi
+  
 }
 
 set -e # Terminate script if anything exits with a non-zero value
@@ -30,9 +39,11 @@ if [ -z "$DOTFILES" ]; then
   export DOTFILES="${HOME}/dotfiles"
 fi
 
-if [ -z "$HOST_NAME" ]; then
-  HOST_NAME=$(scutil --get HostName)
-  export HOST_NAME
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  if [ -z "$HOST_NAME" ]; then
+    HOST_NAME=$(scutil --get HostName)
+    export HOST_NAME
+  fi
 fi
 
 if [ ! -d "${DOTFILES}/machines/${HOST_NAME}" ]; then
@@ -48,13 +59,11 @@ if [ -z "$XDG_CONFIG_HOME" ]; then
 fi
 
 home_files=(
-# "asdfrc"
+"asdfrc"
 # "default-npm-packages"
 "gitconfig"
 "gitignore_global"
 "p10k.zsh"
-"tool-versions"
-"zprofile"
 "zshrc"
 )
 
@@ -84,21 +93,25 @@ done
 
 # TODO symlink ~/bin files
 
-dotfiles_echo "-> Linking Brewfile..."
-if [ -e "${HOME}/Brewfile" ]; then
-  dotfiles_echo "Brewfile exists."
-  if [ -L "${HOME}/Brewfile" ]; then
-    dotfiles_echo "Symbolic link detected. Removing..."
-    rm -v "${HOME}/Brewfile"
-  else
-    dotfiles_echo "Backing up..."
-    dotfiles_backup "${HOME}/Brewfile"
+link_brewfile {
+  dotfiles_echo "-> Linking Brewfile..."
+  if [ -e "${HOME}/Brewfile" ]; then
+    dotfiles_echo "Brewfile exists."
+    if [ -L "${HOME}/Brewfile" ]; then
+      dotfiles_echo "Symbolic link detected. Removing..."
+      rm -v "${HOME}/Brewfile"
+    else
+      dotfiles_echo "Backing up..."
+      dotfiles_backup "${HOME}/Brewfile"
+    fi
   fi
-fi
-dotfiles_echo "-> Linking ${DOTFILES}/Brewfile to ${HOME}/Brewfile..."
+  dotfiles_echo "-> Linking ${DOTFILES}/Brewfile to ${HOME}/Brewfile..."
 ln -nfs "${DOTFILES}/Brewfile" "${HOME}/Brewfile"
+}
 
-# TODO append machine specific brewfile to base file
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  link_brewfile
+fi
 
 # dotfiles_echo "-> Linking config directories..."
 # for item in "${config_dirs[@]}"; do
