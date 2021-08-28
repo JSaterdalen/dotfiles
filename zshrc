@@ -57,11 +57,11 @@ HIST_STAMPS="yyyy-mm-dd"
 fpath=(${ASDF_DIR}/completions $fpath)
 # initialise completions with ZSH's compinit
 autoload -Uz compinit && compinit
+# must be below asdf source
+export PATH="$(yarn global bin):$PATH"
 
 # Include local settings
 [[ -f ~/.zshrc.local ]] && . ~/.zshrc.local
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
