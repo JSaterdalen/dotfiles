@@ -54,7 +54,6 @@ home_files=(
 "gitignore_global"
 "p10k.zsh"
 "tool-versions"
-"zprofile"
 "zshrc"
 )
 
