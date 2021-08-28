@@ -10,6 +10,19 @@ export EDITOR=code
 export SFDX_DIR=$HOME/sfdx
 export RESILIO_DIR="${HOME}/sync"
 
+# Mac CPU
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  HOST_NAME=$(scutil --get HostName)
+  export HOST_NAME
+  
+  CPU=$(uname -p)
+  if [[ "$CPU" == "arm" ]]; then
+      export PATH="/opt/homebrew/bin:$PATH"
+  else
+      export PATH="/usr/local/bin:$PATH"
+  fi
+fi
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.

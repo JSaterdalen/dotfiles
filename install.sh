@@ -64,6 +64,7 @@ home_files=(
 "gitconfig"
 "gitignore_global"
 "p10k.zsh"
+"tool-versions"
 "zshrc"
 )
 
