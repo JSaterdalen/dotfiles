@@ -58,7 +58,6 @@ fpath=(${ASDF_DIR}/completions $fpath)
 # initialise completions with ZSH's compinit
 autoload -Uz compinit && compinit
 # must be below asdf source
-export PATH="$(yarn global bin):$PATH"
 
 # Include local settings
 [[ -f ~/.zshrc.local ]] && . ~/.zshrc.local
