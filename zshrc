@@ -55,9 +55,11 @@ HIST_STAMPS="yyyy-mm-dd"
 . ~/.asdf/plugins/java/set-java-home.zsh
 # append completions to fpath
 fpath=(${ASDF_DIR}/completions $fpath)
+
+# sfdx completions
+fpath=($HOME/.zsh/salesforce-cli-zsh-completion $fpath)
 # initialise completions with ZSH's compinit
 autoload -Uz compinit && compinit
-# must be below asdf source
 
 # Include local settings
 [[ -f ~/.zshrc.local ]] && . ~/.zshrc.local
