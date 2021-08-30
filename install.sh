@@ -131,6 +131,43 @@ ln -nfs "${DOTFILES}/Brewfile" "${HOME}/Brewfile"
 #   ln -nfs "${DOTFILES}/machines/${HOST_NAME}/${item}" "${XDG_CONFIG_HOME}/$item"
 # done
 
+# TODO set up manual zsh plugins
+dotfiles_echo "Installing powerlevel10k..."
+# git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $HOME/.zsh/powerlevel10k
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+
+P10K_MESLO_FONT_URL="https://github.com/romkatv/powerlevel10k-media/raw/master"
+MESLO_FONTS=(
+  "MesloLGS NF Regular.ttf"
+  "MesloLGS NF Bold.ttf"
+  "MesloLGS NF Italic.ttf"
+  "MesloLGS NF Bold Italic.ttf"
+)
+
+if [[ "$OSTYPE" == 'darwin'* ]]; then
+  FONT_DIR="$HOME/Library/Fonts"
+else
+  FONT_DIR="$HOME/.local/share/fonts"
+  mkdir -p $FONT_DIR
+fi
+
+dotfiles_echo "Downloading powerlevel10k fonts..."
+for item in "${MESLO_FONTS[@]}"; do
+  wget -q --show-progress -P "${FONT_DIR}" "${P10K_MESLO_FONT_URL}/${item}"
+done
+
+if command -v fc-cache @>/dev/null ; then
+    dotfiles_echo "Resetting font cache, this may take a moment..."
+    fc-cache -f $font_dir
+fi
+
+dotfiles_echo "Installing zsh-autosuggestions..."
+# git clone https://github.com/zsh-users/zsh-autosuggestions $HOME/.zsh/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
+dotfiles_echo "Installing zsh-syntax-highlighting..."
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $HOME/.zsh/zsh-syntax-highlighting
+
 dotfiles_echo "Dotfiles installation complete!"
 
 dotfiles_echo "Post-install recommendations:"
