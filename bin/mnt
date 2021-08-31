@@ -46,6 +46,11 @@ mountLocal() {
     if [[ -z "$OP_SESSION_saterdalen" ]]; then 
         getOPSession
     fi
+
+    # TODO add Mac configuration
+    # mkdir /Volumes
+    # mkdir /Volumes/Projects
+    # mount_smbfs //User:Pass@SERVERNAME/Projects /Volumes/Projects
     
     echo "Mounting $SHARE locally..."
     mkdir -p $HOME/mnt/$SHARE
