@@ -136,14 +136,7 @@ dotfiles_echo "Installing powerlevel10k..."
 # git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $HOME/.zsh/powerlevel10k
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 
-P10K_MESLO_FONT_URL="https://github.com/romkatv/powerlevel10k-media/raw/master"
-MESLO_FONTS=(
-  "MesloLGS NF Regular.ttf"
-  "MesloLGS NF Bold.ttf"
-  "MesloLGS NF Italic.ttf"
-  "MesloLGS NF Bold Italic.ttf"
-)
-
+# font install
 if [[ "$OSTYPE" == 'darwin'* ]]; then
   FONT_DIR="$HOME/Library/Fonts"
 else
@@ -151,11 +144,12 @@ else
   mkdir -p $FONT_DIR
 fi
 
+# p10k meslo nerd fonts
+P10K_MESLO_FONT_URL="https://github.com/romkatv/powerlevel10k-media/raw/master"
 dotfiles_echo "Downloading powerlevel10k fonts..."
-for item in "${MESLO_FONTS[@]}"; do
-  wget -q --show-progress -P "${FONT_DIR}" "${P10K_MESLO_FONT_URL}/${item}"
-done
+curl "${P10K_MESLO_FONT_URL}/MesloLGS NF {Regular,Bold,Italic,Bold Italic}.ttf" -o "FONT_DIR/MesloLGS NF #1.ttf"
 
+# if on Linux, reset font cache
 if command -v fc-cache @>/dev/null ; then
     dotfiles_echo "Resetting font cache, this may take a moment..."
     fc-cache -f $font_dir
