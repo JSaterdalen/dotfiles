@@ -47,9 +47,7 @@ setopt HIST_IGNORE_SPACE
 HISTFILE=~/.zsh_history
 HIST_STAMPS="yyyy-mm-dd"
 
-##############
-##   asdf
-##############
+#### asdf
 . $HOME/.asdf/asdf.sh
 # set JAVA_HOME
 . ~/.asdf/plugins/java/set-java-home.zsh
@@ -60,6 +58,7 @@ fpath=(${ASDF_DIR}/completions $fpath)
 fpath=($HOME/.zsh/salesforce-cli-zsh-completion $fpath)
 # initialise completions with ZSH's compinit
 autoload -Uz compinit && compinit
+
 
 # Include local settings
 [[ -f ~/.zshrc.local ]] && . ~/.zshrc.local

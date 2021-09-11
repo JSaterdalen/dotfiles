@@ -1,0 +1,12 @@
+# build a Brewfile with machine-specific configuration
+
+if [ -z "$HOST_NAME" ]; then
+  HOST_NAME=$(scutil --get HostName)
+  export HOST_NAME
+fi
+
+cp "$DOTFILES/Brewfile" "$HOME/Brewfile"
+
+if [ -d "${DOTFILES}/machines/${HOST_NAME}" ]; then
+  cat "${DOTFILES}/machines/${HOST_NAME}/Brewfile" >> "$HOME/Brewfile"
+fi
