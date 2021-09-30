@@ -1,0 +1,37 @@
+mkcd() {
+  mkdir "$1"
+  cd "$1"
+}
+
+# SFDX
+sfo () {
+    if [[ -z "$1" ]]; then 
+        sfdx alias:list
+    else
+        sfdx force:org:open -u $1; 
+    fi
+}
+
+sfc () {
+    cd $HOME/sfdx/$1
+    code . 
+    clear
+}
+
+sflim() {
+    if [[ -z "$1" ]]; then 
+        sfdx alias:list
+    else
+        sfdx force:org:open -u $1; 
+    fi
+}
+
+sfdef() {
+    sfdx config:set defaultusername=${1}
+}
+
+# soql() {
+#     # QUERY="'$*'"
+#     # echo "\"${1}\" -u ${2}"
+#     sfdx force:data:soql:query -q \"${1}\" -u ${2};
+# }

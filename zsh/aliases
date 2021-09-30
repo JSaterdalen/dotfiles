@@ -20,23 +20,6 @@ alias proj="cd '$RESILIO_DIR/gtd/01 - Projects'"
 # jekyll
 alias jks="bundle exec jekyll serve --livereload"
 
-# functions
-mkcd() {
-  mkdir "$1"
-  cd "$1"
-}
-
 # SFDX
-sfo () {
-    if [[ -z "$1" ]]; then 
-        sfdx alias:list
-    else
-        sfdx force:org:open -u $1; 
-    fi
-}
-
-sfc () {
-    cd $HOME/sfdx/$1
-    code . 
-    clear
-}
+alias sfbu="sfdx force:data:bulk:upsert -s"
+alias soql="sfdx force:data:soql:query -q"
