@@ -3,35 +3,37 @@ mkcd() {
   cd "$1"
 }
 
-# SFDX
-sfo () {
-    if [[ -z "$1" ]]; then 
-        sfdx alias:list
-    else
-        sfdx force:org:open -u $1; 
-    fi
-}
+# ::: SFDX :::
 
-sfc () {
-    cd $HOME/sfdx/$1
-    code . 
-    clear
+# open org
+sfo() {
+  if [[ -z "$1" ]]; then 
+    sfdx alias:list
+  else
+    sfdx force:org:open -u $1; 
+  fi
 }
-
+# open org in VSCode
+sfc() {
+  cd $HOME/sfdx/$1
+  code . 
+  clear
+}
+# display org api limits
 sflim() {
-    if [[ -z "$1" ]]; then 
-        sfdx alias:list
-    else
-        sfdx force:org:open -u $1; 
-    fi
+  if [[ -z "$1" ]]; then 
+    sfdx alias:list
+  else
+    sfdx force:org:open -u $1; 
+  fi
 }
-
+# set default org in current project
 sfdef() {
-    sfdx config:set defaultusername=${1}
+  sfdx config:set defaultusername=${1}
 }
 
 # soql() {
-#     # QUERY="'$*'"
-#     # echo "\"${1}\" -u ${2}"
-#     sfdx force:data:soql:query -q \"${1}\" -u ${2};
+#   # QUERY="'$*'"
+#   # echo "\"${1}\" -u ${2}"
+#   sfdx force:data:soql:query -q \"${1}\" -u ${2};
 # }
