@@ -22,4 +22,5 @@ alias jks="bundle exec jekyll serve --livereload"
 
 # SFDX
 alias sfbu="sfdx force:data:bulk:upsert -s"
+alias sfbd="sfdx force:data:bulk:delete -s"
 alias soql="sfdx force:data:soql:query -q"
