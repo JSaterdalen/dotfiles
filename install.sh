@@ -67,7 +67,15 @@ link_basic_dotfiles() {
   done
 }
 
-# TODO symlink ~/bin files
+link_bin_files() {
+  dotfiles_echo "Installing bin scripts..."
+
+  dotfiles_echo "-> Linking bin scripts..."
+  for item in "${DOTFILES}/bin/*"; do
+    dotfiles_echo "-> Linking ${DOTFILES}/bin/${item} to ${HOME}/bin/${item}..."
+    ln -nfs "${DOTFILES}/bin/${item}" "${HOME}/bin/${item}"
+  done
+}
 
 link_brewfile() {
   dotfiles_echo "-> Linking Brewfile..."
@@ -119,6 +127,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
   get_mac_host_name
   check_machine_config
   link_basic_dotfiles
+  link_bin_files
   # link_brewfile
 else
   check_machine_config
