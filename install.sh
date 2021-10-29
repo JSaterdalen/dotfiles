@@ -15,11 +15,11 @@ dotfiles_echo() {
 
 dotfiles_backup() {
   if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-  # TODO see if this will cover macOS also
     if [ -d "$1" ]; then
       mv -v "$1" "${1}_bak_$(date +"%d-%m-%y-%T")"
     else
       cp -f --backup=numbered "$1" "$1"
+    fi
   elif [[ "$OSTYPE" == "darwin"* ]]; then
     if ! command -v gcp >/dev/null || ! command -v gdate >/dev/null; then
       dotfiles_echo "GNU cp and date commands are required. Please install via Homebrew coreutils: brew install coreutils"
