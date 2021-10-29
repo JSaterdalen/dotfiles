@@ -71,6 +71,9 @@ link_bin_files() {
   dotfiles_echo "Installing bin scripts..."
 
   dotfiles_echo "-> Linking bin scripts..."
+  if [ ! -d "${HOME}/bin" ]; then
+    mkdir "${HOME}/bin"
+  fi
   for item in "${DOTFILES}/bin/*"; do
     dotfiles_echo "-> Linking ${DOTFILES}/bin/${item} to ${HOME}/bin/${item}..."
     ln -nfs "${DOTFILES}/bin/${item}" "${HOME}/bin/${item}"
