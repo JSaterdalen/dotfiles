@@ -119,7 +119,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
   get_mac_host_name
   check_machine_config
   link_basic_dotfiles
-  link_brewfile
+  # link_brewfile
 else
   check_machine_config
   link_basic_dotfiles
