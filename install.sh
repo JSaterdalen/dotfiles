@@ -74,7 +74,7 @@ link_bin_files() {
   if [ ! -d "${HOME}/bin" ]; then
     mkdir "${HOME}/bin"
   fi
-  for item in "${DOTFILES}/bin/*"; do
+  for item in "${DOTFILES}/bin/"; do
     dotfiles_echo "-> Linking ${DOTFILES}/bin/${item} to ${HOME}/bin/${item}..."
     ln -nfs "${DOTFILES}/bin/${item}" "${HOME}/bin/${item}"
   done
@@ -170,6 +170,7 @@ fi
 # done
 
 # TODO set up manual zsh plugins
+# TODO check if folder exists
 dotfiles_echo "Installing powerlevel10k..."
 # git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $HOME/.zsh/powerlevel10k
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
@@ -187,18 +188,18 @@ P10K_MESLO_FONT_URL="https://github.com/romkatv/powerlevel10k-media/raw/master"
 dotfiles_echo "Downloading powerlevel10k fonts..."
 curl "${P10K_MESLO_FONT_URL}/MesloLGS NF {Regular,Bold,Italic,Bold Italic}.ttf" -o "${FONT_DIR}/MesloLGS NF #1.ttf"
 
-https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf
-
 # if on Linux, reset font cache
 if command -v fc-cache @>/dev/null ; then
     dotfiles_echo "Resetting font cache, this may take a moment..."
     fc-cache -f $font_dir
 fi
 
+# TODO check if folder exists
 dotfiles_echo "Installing zsh-autosuggestions..."
 # git clone https://github.com/zsh-users/zsh-autosuggestions $HOME/.zsh/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
+# TODO check if folder exists
 dotfiles_echo "Installing zsh-syntax-highlighting..."
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $HOME/.zsh/zsh-syntax-highlighting
 
