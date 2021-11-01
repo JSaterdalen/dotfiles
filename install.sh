@@ -185,8 +185,11 @@ fi
 
 # p10k meslo nerd fonts
 P10K_MESLO_FONT_URL="https://github.com/romkatv/powerlevel10k-media/raw/master"
-dotfiles_echo "Downloading powerlevel10k fonts..."
-# wget -P "${FONT_DIR}/MesloLGS NF #1.ttf" "${P10K_MESLO_FONT_URL}/MesloLGS NF {Regular,Bold,Italic,Bold Italic}.ttf" #todo change to wget. need to loop?
+MESLO_FONTS=('Regular' 'Bold' 'Italic' 'Bold Italic')
+dotfiles_echo "Downloading Meslo fonts..."
+for i in "${MESLO_FONTS[@]}"; do
+  wget -P "${FONT_DIR}" "${P10K_MESLO_FONT_URL}/MesloLGS NF $i.ttf"
+done
 
 # if on Linux, reset font cache
 if command -v fc-cache @>/dev/null ; then
