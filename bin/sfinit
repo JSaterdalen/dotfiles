@@ -39,9 +39,7 @@ initAlias() {
     echo "Authorizing..."
     echo
     sfdx force:auth:web:login --setalias $ALIASNAME -r $INSTURL
-    echo "Let's test it out..."
-    sleep 2
-    sfdx force:org:open -u $ALIASNAME
+    echo "You're all set!"
 }
 
 initProject() {

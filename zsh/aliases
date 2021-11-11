@@ -37,16 +37,6 @@ mkcd() {
 }
 
 # SFDX
-sfo () {
-    if [[ -z "$1" ]]; then 
-        sfdx alias:list
-    else
-        sfdx force:org:open -u $1; 
-    fi
-}
-
-sfc () {
-    cd $HOME/sfdx/$1
-    code . 
-    clear
-}
+alias sfbu="sfdx force:data:bulk:upsert -s"
+alias sfbd="sfdx force:data:bulk:delete -s"
+alias soql="sfdx force:data:soql:query -q"

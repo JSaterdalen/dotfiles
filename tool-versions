@@ -1,4 +1,4 @@
 ruby 3.0.2
 nodejs 16.9.1
 python 3.9.7
-java zulu-11.50.19
+java adoptopenjdk-11.0.13+8
