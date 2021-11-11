@@ -11,8 +11,11 @@
   path = ~/.gitconfig.local
 
 [init]
-  defaultBranch = main
+	defaultBranch = main
 
 [push]
   # Refuse to push if upstream branch name is different from local.
   default = simple
+[user]
+	name = Josh Saterdalen
+	email = josh@saterdalen.me

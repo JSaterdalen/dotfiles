@@ -1,7 +1,7 @@
 # ~/.zshrc
 
 # environment variables
-export PATH=$HOME/bin:$HOME/bin/scripts:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin
+export PATH=$HOME/bin:$HOME/bin/scripts:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/snap/bin
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
