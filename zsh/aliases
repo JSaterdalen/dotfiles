@@ -20,6 +20,16 @@ alias proj="cd '$RESILIO_DIR/gtd/01 - Projects'"
 # jekyll
 alias jks="bundle exec jekyll serve --livereload"
 
+# docker
+alias dcup='docker-compose --env-file=/home/josh/docker/.env -f /home/josh/docker/docker-compose.yml up -d' #brings up all containers if one is not defined after dcup
+alias dcdown='docker-compose --env-file=/home/josh/docker/.env -f /home/josh/docker/docker-compose.yml stop' #brings down all containers if one is not defined after dcdown
+alias dcpull='docker-compose --env-file=/home/josh/docker/.env -f /home/josh/docker/docker-compose.yml pull' #pulls all new images unless one is specified
+alias dcr='docker-compose --env-file=/home/josh/docker/.env -f /home/josh/docker/docker-compose.yml restart'
+alias dclogs='docker-compose --env-file=/home/josh/docker/.env -f /home/josh/docker/docker-compose.yml logs -tf --tail="50" '
+alias dtail='docker logs -tf --tail="50" "$@"'
+alias dcps='docker-compose --env-file=/home/josh/docker/.env -f /home/josh/docker/docker-compose.yml ps'
+alias dclean='docker system prune -f --all --volumes'
+
 # SFDX
 alias sfbu="sfdx force:data:bulk:upsert -s"
 alias sfbd="sfdx force:data:bulk:delete -s"
