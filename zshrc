@@ -55,7 +55,9 @@ HIST_STAMPS="yyyy-mm-dd"
 fpath=(${ASDF_DIR}/completions $fpath)
 
 # sfdx completions
-fpath=($HOME/.zsh/salesforce-cli-zsh-completion $fpath)
+eval 
+SFDX_AC_ZSH_SETUP_PATH=/Users/josh/Library/Caches/sfdx/autocomplete/zsh_setup && test -f $SFDX_AC_ZSH_SETUP_PATH && source $SFDX_AC_ZSH_SETUP_PATH;
+
 # initialise completions with ZSH's compinit
 autoload -Uz compinit && compinit
 
