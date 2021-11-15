@@ -34,3 +34,4 @@ alias dclean='docker system prune -f --all --volumes'
 alias sfbu="sfdx force:data:bulk:upsert -s"
 alias sfbd="sfdx force:data:bulk:delete -s"
 alias soql="sfdx force:data:soql:query -q"
+alias sfup="npm install sfdx-cli --global"
