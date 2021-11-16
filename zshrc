@@ -40,6 +40,7 @@ export CSV_URL="https://docs.google.com/spreadsheets/d/1JKp6YT5-dIFD9aIqZhU1Tp-m
 
 . $DOTFILES/zsh/oh-my-zsh # TODO replace omz with manual config
 . $DOTFILES/zsh/aliases
+. $DOTFILES/zsh/named_dir
 . $DOTFILES/zsh/functions
 . $DOTFILES/zsh/plugins
 
