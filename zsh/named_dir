@@ -1,1 +1,2 @@
-hash -d dcproj="/Users/josh/OneDrive - Demand Chain Systems/01_projects"
+hash -d dcp="${HOME}/OneDrive - Demand Chain Systems/01_projects"
+hash -d dc="${HOME}/OneDrive - Demand Chain Systems"
