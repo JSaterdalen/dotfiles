@@ -19,3 +19,5 @@
 [user]
 	name = Josh Saterdalen
 	email = josh@saterdalen.me
+[pull]
+	ff = only
