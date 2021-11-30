@@ -31,7 +31,10 @@ alias dcps='docker-compose --env-file=/home/josh/docker/.env -f /home/josh/docke
 alias dclean='docker system prune -f --all --volumes'
 
 # SFDX
-alias sfbu="sfdx force:data:bulk:upsert -s"
-alias sfbd="sfdx force:data:bulk:delete -s"
+alias dxbu="sfdx force:data:bulk:upsert -s"
+alias dxbd="sfdx force:data:bulk:delete -s"
 alias soql="sfdx force:data:soql:query -q"
-alias sfup="npm install sfdx-cli --global"
+alias dxup="npm install sfdx-cli --global"
+alias dxpull="sfdx force:source:pull"
+alias dxpush="sfdx force:source:push"
+alias dxs="sfdx force:source:status"
