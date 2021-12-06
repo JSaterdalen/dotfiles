@@ -17,6 +17,7 @@ cask "ledger-live"
 cask "musicbrainz-picard"
 cask "obinskit"
 cask "private-internet-access"
+cask "sketch"
 cask "yacreader"
 # --- drivers
 cask "caldigit-thunderbolt-charging"

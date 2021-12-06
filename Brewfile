@@ -13,6 +13,8 @@ brew "gh"
 brew "gifski"
 brew "mas" #https://github.com/mas-cli/mas
 brew "sqlite"
+brew "coreutils"
+brew "gnupg"
 
 # --- Mac App Store apps --- 'mas install'
 mas "Amphetamine", id: 937984704
@@ -25,6 +27,7 @@ mas "Things", id: 904280696
 
 # --- BASE INSTALL ---
 cask "1password"
+cask "1password-cli"
 cask "authy"
 cask "appcleaner"
 cask "cryptomator"
@@ -52,8 +55,8 @@ cask "raycast"
 cask "rectangle" # window management (open-source version of Magnet)
 cask "resilio-sync"
 cask "rocket" # emoji app
+cask "shottr"
 cask "signal"
-cask "sketch"
 cask "soundsource"
 cask "spotify"
 cask "typora"
