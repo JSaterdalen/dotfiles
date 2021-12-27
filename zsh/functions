@@ -3,6 +3,19 @@ mkcd() {
   cd "$1"
 }
 
+# ::: Linux :::
+
+## fix Divinity Original Sin II on Linux
+fixdos() {
+  cd "/home/josh/games/SteamLibrary/steamapps/common/Divinity Original Sin 2/"
+  mv ./bin ./bin.bak 
+  ln -s DefEd/bin bin
+  cd bin
+  mv ./SupportTool.exe ./SupportTool.bak
+  ln -s EoCApp.exe SupportTool.exe
+  cd
+}
+
 # ::: SFDX :::
 
 # open org
