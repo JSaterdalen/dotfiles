@@ -23,6 +23,18 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
   fi
 fi
 
+case "$OSTYPE" in
+  darwin*)
+    # ...
+  ;;
+  linux*)
+    SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+  ;;
+  *)
+    # ...
+  ;;
+esac
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -46,6 +58,8 @@ export CSV_URL="https://docs.google.com/spreadsheets/d/1JKp6YT5-dIFD9aIqZhU1Tp-m
 
 setopt HIST_IGNORE_SPACE
 HISTFILE=~/.zsh_history
+HISTSIZE=1000
+SAVEHIST=$HISTSIZE
 HIST_STAMPS="yyyy-mm-dd"
 
 #### asdf
