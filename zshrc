@@ -69,8 +69,10 @@ HIST_STAMPS="yyyy-mm-dd"
 # append completions to fpath
 fpath=(${ASDF_DIR}/completions $fpath)
 
-# sfdx completions
-eval $(sfdx autocomplete:script zsh)
+if command -v sfdx &> /dev/null; then
+  # sfdx completions
+  eval $(sfdx autocomplete:script zsh)
+fi
 
 # initialise completions with ZSH's compinit
 autoload -Uz compinit && compinit
