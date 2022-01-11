@@ -75,6 +75,8 @@ eval $(sfdx autocomplete:script zsh)
 # initialise completions with ZSH's compinit
 autoload -Uz compinit && compinit
 
+# Color LS tab completion
+source $(dirname $(gem which colorls))/tab_complete.sh
 
 # Include local settings
 [[ -f ~/.zshrc.local ]] && . ~/.zshrc.local

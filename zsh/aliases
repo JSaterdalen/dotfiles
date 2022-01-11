@@ -1,6 +1,8 @@
 # general UNIX
 alias ..="cd .."
-alias l="ls -AlF"
+# alias l="ls -AlF"
+alias l="colorls -lA --sd"
+alias ls="colorls --sd"
 alias la="ls -Ax"
 # alias l='ls -CF'
 alias edit="code ~/.zshrc"
