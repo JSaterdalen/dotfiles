@@ -74,9 +74,10 @@ link_bin_files() {
   if [ ! -d "${HOME}/bin" ]; then
     mkdir "${HOME}/bin"
   fi
-  for item in "${DOTFILES}/bin/"; do
-    dotfiles_echo "-> Linking ${DOTFILES}/bin/${item} to ${HOME}/bin/${item}..."
-    ln -nfs "${DOTFILES}/bin/${item}" "${HOME}/bin/${item}"
+  for item in "${DOTFILES}/bin/"*; do
+    item_path="$(basename "$item")"
+    dotfiles_echo "-> Linking ${DOTFILES}/bin/${item_path} to ${HOME}/bin/${item_path}..."
+    ln -nfs "${DOTFILES}/bin/${item_path}" "${HOME}/bin/${item_path}"
   done
 }
 
