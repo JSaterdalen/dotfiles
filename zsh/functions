@@ -45,6 +45,14 @@ sfdef() {
   sfdx config:set defaultusername=${1}
 }
 
+dxup() {
+  if [[ $(npm list -g | grep sfdx-cli) ]] ; then
+    echo "npm update"
+  else
+    echo "sfdx update"
+  fi
+}
+
 # soql() {
 #   # QUERY="'$*'"
 #   # echo "\"${1}\" -u ${2}"
