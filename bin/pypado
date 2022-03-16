@@ -2,13 +2,6 @@
 
 """Format a given SFDX package.xml file for importing into a Copado Work Item.
 
-When run, pypado looks for a package.xml file in 3 ways:
-
-1. If an argument is passed, check for a valid path to a package.xml
-    - e.g. `pypado manifest/package.xml`
-2. Checks for xml content on the user's clipboard
-3. Checks the current directory for a package.xml file
-
 Requirements
 
 - beautifulsoup4
@@ -17,35 +10,34 @@ Requirements
 """
 
 import os.path
-import sys
+import argparse
 from bs4 import BeautifulSoup
 import pyperclip
 
-PACKAGE_XML = ''
-USE_CLIPBOARD = False
+parser = argparse.ArgumentParser(prog='pypado')
+group = parser.add_mutually_exclusive_group()
+group.add_argument('-x', metavar='file', default='package.xml',
+                   help='path to package.xml file')
+group.add_argument('-c', action='store_true',
+                   help='use data from clipboard')
+args = parser.parse_args()
 
-# if argument passed
-if len(sys.argv) > 1:
-    PACKAGE_XML = sys.argv[1]
-# clipboard has needed xml tag
-elif "<types>" in pyperclip.paste():
-    USE_CLIPBOARD = True
-# default to current directory
-else:
-    PACKAGE_XML = 'package.xml'
-
-# if there is no valid file or valid clipboard text, exit
-if not (os.path.exists(PACKAGE_XML) or USE_CLIPBOARD):
-    print("No package.xml found.\nEither run in the same directory as a "
-          "package.xml, or specify the location.\n"
-          "    e.g. 'python pypado.py manifest/package.xml'")
-    exit()
+PACKAGE_XML = args.x
+USE_CLIPBOARD = args.c
 
 if USE_CLIPBOARD:
     file = pyperclip.paste()
+    if not "<types>" in file:
+        print("\nClipboard does not contain valid xml.\n")
+        exit()
 else:
+    if not os.path.exists(PACKAGE_XML):
+        print("\nNo package.xml found.\n\n"
+              "Run `pypado -h` for help.\n")
+        exit()
     with open(os.path.expanduser(PACKAGE_XML), 'r') as f:
         file = f.read()
+
 soup = BeautifulSoup(file, 'xml')
 
 # make a list of all <types> tags
@@ -59,8 +51,9 @@ for t in types:
     for member in members:
         component_list.append(f"{type_name.string}/{member.string}")
 
+# format list with line breaks
 COMP_LIST_FORMATTED = "\n".join(component_list)
 pyperclip.copy(COMP_LIST_FORMATTED)
 
 print('\n' + COMP_LIST_FORMATTED + '\n')
-print("Component list has been copied to your clipboard.")
+print("List has been copied to your clipboard.\n")
