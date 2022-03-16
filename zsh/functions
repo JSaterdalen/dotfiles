@@ -47,9 +47,9 @@ sfdef() {
 
 dxup() {
   if [[ $(npm list -g | grep sfdx-cli) ]] ; then
-    echo "npm update"
+    npm install @salesforce/cli --global
   else
-    echo "sfdx update"
+    sfdx update
   fi
 }
 
