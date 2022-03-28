@@ -61,9 +61,3 @@ dxcopypkg() {
     sfdx force:package:install -u $2 -w 500 -p $OUTPUT -a package -r
   done
 }
-
-# soql() {
-#   # QUERY="'$*'"
-#   # echo "\"${1}\" -u ${2}"
-#   sfdx force:data:soql:query -q \"${1}\" -u ${2};
-# }
