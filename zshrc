@@ -74,6 +74,11 @@ if command -v sfdx &> /dev/null; then
   eval $(sfdx autocomplete:script zsh)
 fi
 
+if command -v sf &> /dev/null; then
+  # sfdx completions
+  eval $(sf autocomplete:script zsh)
+fi
+
 # initialise completions with ZSH's compinit
 autoload -Uz compinit && compinit
 
