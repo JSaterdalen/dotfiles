@@ -2,6 +2,8 @@
 
 set -eo pipefail
 
+FLAGS="-t cifs -o rw,uid=josh,username=josh //192.168.1.5/$SHARE $HOME/mnt/$SHARE"
+
 mountRemote() {
     if [[ -z "$SHARE" ]]; then 
         getShare 
@@ -13,7 +15,7 @@ mountRemote() {
     
     read -s -p "pass: " PASS
     echo
-    SYNO=$(op get item mqrsargv65gofgcia2fw35gphy --fields password)
+    SYNO=$(op item get mqrsargv65gofgcia2fw35gphy --fields password)
     echo
 
     echo "Connecting to Rey..."
@@ -54,8 +56,8 @@ mountLocal() {
     
     echo "Mounting $SHARE locally..."
     mkdir -p $HOME/mnt/$SHARE
-    LOCAL=$(op get item szebn3jowfktte6pi5cboaco5y --fields password)
-    echo $LOCAL | sudo -S mount -t cifs -o rw,uid=josh,gid=josh,credentials=$HOME/.sharelogin //192.168.1.5/$SHARE $HOME/mnt/$SHARE 2> /dev/null
+    LOCAL=$(op item get szebn3jowfktte6pi5cboaco5y --fields password)
+    echo $LOCAL | sudo -S mount $FLAGS 2> /dev/null
     
     if [[ $? -eq 1 ]]; then
         echo "Not mounted. Use '-m' to mount."
@@ -78,13 +80,13 @@ unmountShare() {
 
     if [[ -d "$HOME/mnt/$SHARE" ]]; then 
         echo "Unmounting locally..."
-        LOCAL=$(op get item szebn3jowfktte6pi5cboaco5y --fields password)
+        LOCAL=$(op item get szebn3jowfktte6pi5cboaco5y --fields password)
         echo $LOCAL | sudo -S umount $HOME/mnt/$SHARE &> /dev/null
         rm -rf $HOME/mnt/$SHARE
         echo "Unmounted $SHARE locally."
     fi
 
-    SYNO=$(op get item mqrsargv65gofgcia2fw35gphy --fields password)
+    SYNO=$(op item get mqrsargv65gofgcia2fw35gphy --fields password)
     echo "Connecting to Rey..."
     ssh -T josh@192.168.1.5 << EOF
     echo "Connected."
@@ -105,7 +107,7 @@ getShare() {
 }
 
 getOPSession() {
-    eval $(op signin saterdalen)
+    eval $(op signin)
     if [[ -z "$OP_SESSION_saterdalen" ]]; then 
         return 1
     fi
