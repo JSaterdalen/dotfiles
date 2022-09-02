@@ -19,8 +19,13 @@ alias res="cd $RESILIO_DIR"
 alias gtd="cd $RESILIO_DIR/gtd"
 alias inbox="cd $RESILIO_DIR/inbox"
 alias proj="cd '$RESILIO_DIR/gtd/01 - Projects'"
+
 # jekyll
 alias jks="bundle exec jekyll serve --livereload"
+
+# caddy
+alias caddyreload="docker exec -w /config caddy caddy fmt -overwrite"
+alias caddyformat="docker exec -w /config caddy caddy reload"
 
 # docker
 alias dcup='docker compose -f /home/josh/docker/docker-compose.yml up -d' #brings up all containers if one is not defined after dcup
