@@ -3,6 +3,10 @@ mkcd() {
   cd "$1"
 }
 
+tldr() {
+    curl -s "cheat.sh/$1"
+}
+
 # ::: Linux :::
 
 ## fix Divinity Original Sin II on Linux
