@@ -1,15 +1,14 @@
 # general UNIX
 alias ..="cd .."
-# alias l="ls -AlF"
+
 alias l="colorls -lA --sd"
 alias ls="colorls --sd"
 alias la="ls -Ax"
-# alias l='ls -CF'
-alias edit="code ~/.zshrc"
+
+# alias edit="code ~/.zshrc"
 alias sc="source ~/.zshrc"
 alias myip="curl http://ipecho.net/plain; echo"
-alias dc="docker-compose"
-alias -s {md,json,html,py,sh,applescript,js}=code
+alias -s {md,json,html,js}=code
 
 # ssh aliases
 alias gwen="ssh josh@192.168.1.6"
@@ -19,9 +18,6 @@ alias res="cd $RESILIO_DIR"
 alias gtd="cd $RESILIO_DIR/gtd"
 alias inbox="cd $RESILIO_DIR/inbox"
 alias proj="cd '$RESILIO_DIR/gtd/01 - Projects'"
-
-# jekyll
-alias jks="bundle exec jekyll serve --livereload"
 
 # caddy
 alias caddyformat="docker exec -w /config caddy caddy fmt -overwrite"

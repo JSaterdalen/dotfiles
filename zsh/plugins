@@ -1,3 +1,4 @@
-# . $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-# . $HOME/powerlevel10k/powerlevel10k.zsh-theme
 . $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+. $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+. $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+. $HOME/powerlevel10k/powerlevel10k.zsh-theme
