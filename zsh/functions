@@ -37,9 +37,12 @@ sfdef() {
 }
 
 dxup() {
-  if [[ $(npm list -g | grep sfdx-cli) ]] ; then
-    npm install @salesforce/cli --global
+  if npm list -g | grep -q 'sfdx-cli'
+  then
+    echo 'sfdx-cli installed with node. Updating...'
+    npm update -g sfdx-cli
   else
+    echo 'sfdx-cli installed independently. Updating...'
     sfdx update
   fi
 }
