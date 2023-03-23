@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 hash -d dcp="${HOME}/OneDrive - Demand Chain Systems/01_projects"
 hash -d dc="${HOME}/OneDrive - Demand Chain Systems"
 hash -d obsidian="/Users/josh/Library/Mobile Documents/iCloud~md~obsidian"

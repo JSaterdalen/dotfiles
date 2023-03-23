@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+
+log() {
+  local fmt="$1"; shift
+
+  # shellcheck disable=SC2059
+  printf "\\n[DEPLOY] $fmt\\n" "$@"
+}
+
+pr() {
+  printf "\\n%s\\n" "$1"
+}
+
+cont() {
+  while true
+  do
+      read -p "$1 (y/n) " -r -n 1 choice
+      case "$choice" in
+        n|N) exit 1;;
+        y|Y) break;;
+        *) echo 'Response not valid';;
+      esac
+  done
+}
+
+RELEASE=$(git describe --tags --abbrev=0)
+
+if [[ -z "${RELEASE}" ]]; then
+  log "There are no commit tags in the current project. Exiting."
+  exit 1
+fi
+
+
+pr "Deploying changes made since the $RELEASE tag."
+pr "Changes will be made to org: $1"
+echo
+cont "Would you like to continue?"
+echo
+
+if ! [[ $1 ]]; then
+  log "Must specify a target org."
+  exit 1
+fi
+
+
+mkdir -p _deploy
+log "Building package..."
+sfdx sgd:source:delta --from "$RELEASE" --output _deploy --generate-delta
+
+log "Deploying..."
+sfdx force:source:deploy -p _deploy -u "$1"
+
+cleanup () {
+  rm -rf _deploy
+}

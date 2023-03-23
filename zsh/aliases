@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # general UNIX
 alias ..="cd .."
 
@@ -5,10 +7,11 @@ alias l="colorls -lA --sd"
 alias ls="colorls --sd"
 alias la="ls -Ax"
 
+alias plugpull="find ${ZDOTDIR:-$HOME}/.zsh_plugins -type d -exec test -e '{}/.git' ';' -print0 | xargs -I {} -0 git -C {} pull"
+
 # alias edit="code ~/.zshrc"
-alias sc="source ~/.zshrc"
+alias sc="source ${ZDOTDIR}/.zshrc"
 alias myip="curl http://ipecho.net/plain; echo"
-alias -s {md,json,html,js}=code
 
 # ssh aliases
 alias gwen="ssh josh@192.168.1.6"
@@ -29,9 +32,7 @@ alias dcdown='docker compose -f /home/josh/docker/docker-compose.yml stop' #brin
 alias dcpull='docker compose -f /home/josh/docker/docker-compose.yml pull' #pulls all new images unless one is specified
 alias dcr='docker compose -f /home/josh/docker/docker-compose.yml restart'
 alias dclogs='docker compose -f /home/josh/docker/docker-compose.yml logs -tf --tail="50" '
-alias dtail='docker logs -tf --tail="50" "$@"'
 alias dcps='docker compose -f /home/josh/docker/docker-compose.yml ps'
-alias dclean='docker system prune -f --all --volumes'
 
 # SFDX
 alias dxbu="sfdx force:data:bulk:upsert -s"
@@ -40,7 +41,5 @@ alias soql="sfdx force:data:soql:query -q"
 alias dxpull="sfdx force:source:pull"
 alias dxpush="sfdx force:source:push"
 alias dxs="sfdx force:source:status"
-alias dxclear="echo 'y' | sfdx force:source:tracking:clear"
-alias dxreset="echo 'y' | sfdx force:source:tracking:reset"
 alias dxtrack="echo 'y' | sfdx force:source:tracking:clear && echo 'y' | sfdx force:source:tracking:reset"
 alias dxdep="sfdx force:source:deploy"
