@@ -19,14 +19,10 @@ export DOTFILES="$HOME/dotfiles"
 . $HOME/.asdf/asdf.sh
 ### set JAVA_HOME
 . ~/.asdf/plugins/java/set-java-home.zsh
+
 ### append completions to fpath
 fpath=(${ASDF_DIR}/completions $fpath)
-
-if which sfdx &> /dev/null; then
-  # sfdx completions
-  SFDX_AC_ZSH_SETUP_PATH=$HOME/Library/Caches/sfdx/autocomplete/zsh_setup
-  source $SFDX_AC_ZSH_SETUP_PATH; # sfdx autocomplete setup
-fi
+fpath=(${ZDOTDIR:-$HOME}/.zsh_plugins/zsh-users/zsh-completions/src $fpath)
 
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh

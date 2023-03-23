@@ -3,6 +3,7 @@
 github_plugins=(
   zsh-users/zsh-autosuggestions
   zsh-users/zsh-syntax-highlighting
+  zsh-users/zsh-completions
   marlonrichert/zsh-autocomplete
   # theme
   romkatv/powerlevel10k
