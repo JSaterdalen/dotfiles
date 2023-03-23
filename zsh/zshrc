@@ -28,8 +28,5 @@ if which sfdx &> /dev/null; then
   source $SFDX_AC_ZSH_SETUP_PATH; # sfdx autocomplete setup
 fi
 
-# Color LS tab completion
-source $(dirname $(gem which colorls))/tab_complete.sh
-
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh

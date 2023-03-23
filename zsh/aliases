@@ -3,9 +3,9 @@
 # general UNIX
 alias ..="cd .."
 
-alias l="colorls -lA --sd"
-alias ls="colorls --sd"
-alias la="ls -Ax"
+alias ll='gls -alF --group-directories-first'
+alias la='gls -A --group-directories-first'
+alias l='gls -CF --group-directories-first'
 
 alias plugpull="find ${ZDOTDIR:-$HOME}/.zsh_plugins -type d -exec test -e '{}/.git' ';' -print0 | xargs -I {} -0 git -C {} pull"
 
