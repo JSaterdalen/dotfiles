@@ -1,11 +1,16 @@
 #!/usr/bin/env bash
 
-# general UNIX
+# setting common options
 alias ..="cd .."
-
-alias ll='gls -alF --group-directories-first'
-alias la='gls -A --group-directories-first'
-alias l='gls -CF --group-directories-first'
+alias cp='cp -iv'
+alias mv='mv -iv'
+alias rmdir='rmdir -v'
+alias ln='ln -v'
+alias grep='grep --color=auto'
+alias ls='gls'
+alias ll='ls -alF --color=auto --human-readable --group-directories-first'
+alias la='ls -A --color=auto --human-readable --group-directories-first'
+alias l='ls -CF --color=auto --human-readable --group-directories-first'
 
 alias plugpull="find ${ZDOTDIR:-$HOME}/.zsh_plugins -type d -exec test -e '{}/.git' ';' -print0 | xargs -I {} -0 git -C {} pull"
 
