@@ -1,0 +1,24 @@
+- defaults:
+    link:
+      relink: true
+
+- clean:
+    ~/:
+      force: true
+    ~/.config:
+      recursive: true
+
+- create:
+    - ~/.config/zsh
+    - ~/.config/nvim
+
+- link:
+    ~/.zshenv: zsh/zshenv
+    ~/.config/zsh/.zshrc: zsh/zshrc
+    ~/.asdfrc: asdfrc
+    ~/.gitconfig: gitconfig
+    ~/.gitignore_global: gitignore_global
+    ~/.tool-versions: tool-versions
+
+- shell:
+  - [git submodule update --init --recursive, Installing submodules]
