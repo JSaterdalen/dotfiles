@@ -30,6 +30,10 @@ if [[ -z "${RELEASE}" ]]; then
   exit 1
 fi
 
+if ! [[ $1 ]]; then
+  log "Must specify a target org."
+  exit 1
+fi
 
 pr "Deploying changes made since the $RELEASE tag."
 pr "Changes will be made to org: $1"
@@ -37,15 +41,14 @@ echo
 cont "Would you like to continue?"
 echo
 
-if ! [[ $1 ]]; then
-  log "Must specify a target org."
-  exit 1
-fi
-
 
 mkdir -p _deploy
 log "Building package..."
 sfdx sgd:source:delta --from "$RELEASE" --output _deploy --generate-delta
+
+pr "Please review the generated package to be deployed."
+echo
+cont "Deploy?"
 
 log "Deploying..."
 sfdx force:source:deploy -p _deploy -u "$1"
