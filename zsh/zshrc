@@ -24,5 +24,7 @@ export DOTFILES="$HOME/.dotfiles"
 fpath=(${ASDF_DIR}/completions $fpath)
 fpath=(${ZDOTDIR:-$HOME}/.zsh_plugins/zsh-users/zsh-completions/src $fpath)
 
+eval $(sf autocomplete:script zsh)
+
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
 [[ ! -f $DOTFILES/zsh/p10k.zsh ]] || source $DOTFILES/zsh/p10k.zsh
