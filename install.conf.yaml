@@ -15,13 +15,23 @@
 - link:
     ~/.zshenv: zsh/zshenv
     ~/.config/zsh/.zshrc: zsh/zshrc
+    ~/.config/karabiner/karabiner.json: karabiner.json
     ~/.asdfrc: asdfrc
     ~/.gitconfig: gitconfig
     ~/.gitignore_global: gitignore_global
     ~/.tool-versions: tool-versions
 
 - shell:
-  - [git submodule update --init --recursive, Installing submodules]
-  - [defaults write com.googlecode.iterm2 PrefsCustomFolder -string "~/.dotfiles/iTerm/settings", Specify iTerm preferences directory]
-  - [defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true, Use custom preferences directory]
-  - [defaults write "com.googlecode.iterm2" "NoSyncNeverRemindPrefsChangesLostForFile_selection" '0', Save changes on exit]
+    - [git submodule update --init --recursive, Installing submodules]
+    - [
+        defaults write com.googlecode.iterm2 PrefsCustomFolder -string "~/.dotfiles/iTerm/settings",
+        Specify iTerm preferences directory,
+      ]
+    - [
+        defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true,
+        Use custom preferences directory,
+      ]
+    - [
+        defaults write "com.googlecode.iterm2" "NoSyncNeverRemindPrefsChangesLostForFile_selection" '0',
+        Save changes on exit,
+      ]
