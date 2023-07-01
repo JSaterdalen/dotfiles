@@ -48,6 +48,7 @@ alias dcpull='docker compose -f /home/josh/docker/docker-compose.yml pull' #pull
 alias dcr='docker compose -f /home/josh/docker/docker-compose.yml restart'
 alias dclogs='docker compose -f /home/josh/docker/docker-compose.yml logs -tf --tail="50" '
 alias dcps='docker compose -f /home/josh/docker/docker-compose.yml ps'
+alias dclean='docker image prune -a --filter "until=24h"'
 
 # SFDX
 alias dxbu="sfdx force:data:bulk:upsert -s"
