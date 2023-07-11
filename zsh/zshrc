@@ -23,6 +23,7 @@ export DOTFILES="$HOME/.dotfiles"
 ### append completions to fpath
 fpath=(${ASDF_DIR}/completions $fpath)
 fpath=(${ZDOTDIR:-$HOME}/.zsh_plugins/zsh-users/zsh-completions/src $fpath)
+FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 
 eval $(sf autocomplete:script zsh)
 
