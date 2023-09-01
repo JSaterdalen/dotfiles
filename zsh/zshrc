@@ -25,7 +25,12 @@ fpath=(${ASDF_DIR}/completions $fpath)
 fpath=(${ZDOTDIR:-$HOME}/.zsh_plugins/zsh-users/zsh-completions/src $fpath)
 FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 
-eval $(sf autocomplete:script zsh)
+if [[ $(command -v sf) ]]; then
+  eval $(sf autocomplete:script zsh)
+fi
+if [[ $(command -v github-copilot-cli) ]]; then
+  eval "$(github-copilot-cli alias -- "$0")"
+fi
 
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
 [[ ! -f $DOTFILES/zsh/p10k.zsh ]] || source $DOTFILES/zsh/p10k.zsh
