@@ -29,8 +29,8 @@ alias sc="source ${ZDOTDIR}/.zshrc"
 alias myip="curl http://ipecho.net/plain; echo"
 
 # ssh aliases
-alias gwen="ssh josh@192.168.1.6"
-alias gwenmnt="sshfs josh@192.168.1.6:/ ./mnt/gwen"
+alias gwen="ssh josh@10.17.50.6"
+alias gwenmnt="sshfs josh@10.17.50.6:/ ./mnt/gwen"
 # locations
 alias res="cd $RESILIO_DIR"
 alias gtd="cd $RESILIO_DIR/gtd"
