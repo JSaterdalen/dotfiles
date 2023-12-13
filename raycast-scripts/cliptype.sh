@@ -2,7 +2,7 @@
 
 # Required parameters:
 # @raycast.schemaVersion 1
-# @raycast.title Clip to keyboard
+# @raycast.title Clip to Keyboard
 # @raycast.mode silent
 
 # Optional parameters:
@@ -10,7 +10,7 @@
 
 # Documentation:
 # @raycast.description Outputs clipboard content as system keystrokes.
-# @raycast.author satrday
+# @raycast.author Josh Saterdalen
 # @raycast.authorURL https://saterdalen.me
 
 type_string() {
