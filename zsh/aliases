@@ -4,7 +4,7 @@ case "$OSTYPE" in
   darwin*)
     alias ls='gls'
   ;;
-  linux*)
+  linux*) 
   ;;
   *)
     # ...
@@ -12,6 +12,7 @@ case "$OSTYPE" in
 esac
 
 # setting common options
+alias vim='${VIM}'
 alias ..="cd .."
 alias cp='cp -iv'
 alias mv='mv -iv'
@@ -22,20 +23,13 @@ alias ll='ls -alF --color=auto --human-readable --group-directories-first'
 alias la='ls -A --color=auto --human-readable --group-directories-first'
 alias l='ls -CF --color=auto --human-readable --group-directories-first'
 
-alias plugpull="find ${ZDOTDIR:-$HOME}/.zsh_plugins -type d -exec test -e '{}/.git' ';' -print0 | xargs -I {} -0 git -C {} pull"
-
 # alias edit="code ~/.zshrc"
-alias sc="source ${ZDOTDIR}/.zshrc"
+alias sc='source ${ZDOTDIR}/.zshrc'
 alias myip="curl http://ipecho.net/plain; echo"
 
 # ssh aliases
 alias gwen="ssh josh@10.17.50.6"
 alias gwenmnt="sshfs josh@10.17.50.6:/ ./mnt/gwen"
-# locations
-alias res="cd $RESILIO_DIR"
-alias gtd="cd $RESILIO_DIR/gtd"
-alias inbox="cd $RESILIO_DIR/inbox"
-alias proj="cd '$RESILIO_DIR/gtd/01 - Projects'"
 
 # caddy
 alias caddyformat="docker exec -w /config caddy caddy fmt -overwrite"
