@@ -18,7 +18,8 @@ export DOTFILES="$HOME/.dotfiles"
 ## asdf
 . $HOME/.asdf/asdf.sh
 ### set JAVA_HOME
-. ~/.asdf/plugins/java/set-java-home.zsh
+# . ~/.asdf/plugins/java/set-java-home.zsh
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home
 
 ### append completions to fpath
 fpath=(${ASDF_DIR}/completions $fpath)
