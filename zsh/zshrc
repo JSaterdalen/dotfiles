@@ -33,5 +33,8 @@ if [[ $(command -v github-copilot-cli) ]]; then
   eval "$(github-copilot-cli alias -- "$0")"
 fi
 
+# bun completions
+[ -s "/Users/josh/.bun/_bun" ] && source "/Users/josh/.bun/_bun"
+
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
 [[ ! -f $DOTFILES/zsh/p10k.zsh ]] || source $DOTFILES/zsh/p10k.zsh

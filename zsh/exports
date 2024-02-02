@@ -11,9 +11,11 @@ export PATH=$DOTFILES/scripts:$PATH
 export PATH=/usr/local/bin:$PATH
 export PATH=/opt/homebrew/sbin:$PATH
 export PATH=$PATH:$HOME/.docker/bin
+export BUN_INSTALL="$HOME/.bun" 
+export PATH="$BUN_INSTALL/bin:$PATH"
 
 case "$OSTYPE" in
-  darwin*)
+    darwin*)
     HOST_NAME=$(scutil --get HostName)
     export HOST_NAME
     
