@@ -6,6 +6,7 @@ HISTSIZE=1000
 SAVEHIST=1000
 HIST_STAMPS="yyyy-mm-dd"
 
+VIM=nvim
 export EDITOR="nvim"
 export PATH=$DOTFILES/scripts:$PATH
 export PATH=/usr/local/bin:$PATH
