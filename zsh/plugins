@@ -1,11 +1,10 @@
 #!/usr/bin/env bash
 
 github_plugins=(
-  zsh-users/zsh-autosuggestions
-  zsh-users/zsh-syntax-highlighting
-  zsh-users/zsh-completions
   marlonrichert/zsh-autocomplete
-  # theme
+  zsh-users/zsh-autosuggestions
+  zsh-users/zsh-completions
+  zsh-users/zsh-syntax-highlighting
   romkatv/powerlevel10k
 )
 
