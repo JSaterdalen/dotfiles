@@ -3,16 +3,16 @@
 case "$OSTYPE" in
   darwin*)
     alias ls='gls'
-  ;;
+    ;;
   linux*) 
-  ;;
+    ;;
   *)
     # ...
-  ;;
+    ;;
 esac
 
 # setting common options
-alias vim='${VIM}'
+alias vim='nvim'
 alias ..="cd .."
 alias cp='cp -iv'
 alias mv='mv -iv'
@@ -23,7 +23,6 @@ alias ll='ls -alF --color=auto --human-readable --group-directories-first'
 alias la='ls -A --color=auto --human-readable --group-directories-first'
 alias l='ls -CF --color=auto --human-readable --group-directories-first'
 
-# alias edit="code ~/.zshrc"
 alias sc='source ${ZDOTDIR}/.zshrc'
 alias myip="curl http://ipecho.net/plain; echo"
 
@@ -43,13 +42,3 @@ alias dcr='docker compose -f /home/josh/docker/docker-compose.yml restart'
 alias dclogs='docker compose -f /home/josh/docker/docker-compose.yml logs -tf --tail="50" '
 alias dcps='docker compose -f /home/josh/docker/docker-compose.yml ps'
 alias dclean='docker image prune -a --filter "until=24h"'
-
-# SFDX
-alias dxbu="sfdx force:data:bulk:upsert -s"
-alias dxbd="sfdx force:data:bulk:delete -s"
-alias soql="sfdx force:data:soql:query -q"
-alias dxpull="sfdx force:source:pull"
-alias dxpush="sfdx force:source:push"
-alias dxs="sfdx force:source:status"
-alias dxtrack="echo 'y' | sfdx force:source:tracking:clear && echo 'y' | sfdx force:source:tracking:reset"
-alias dxdep="sfdx force:source:deploy"
