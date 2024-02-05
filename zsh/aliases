@@ -1,27 +1,44 @@
 #!/usr/bin/env bash
 
 case "$OSTYPE" in
-  darwin*)
-    alias ls='gls'
-    ;;
-  linux*) 
-    ;;
-  *)
-    # ...
-    ;;
+darwin*)
+	alias ls='gls'
+	;;
+linux*) ;;
+*)
+	# ...
+	;;
 esac
 
 # setting common options
 alias vim='nvim'
 alias ..="cd .."
-alias cp='cp -iv'
-alias mv='mv -iv'
 alias rmdir='rmdir -v'
 alias ln='ln -v'
 alias grep='grep --color=auto'
+
+# +----+
+# | cp |
+# +----+
+
+alias cp='cp -iv'
+alias mv='mv -iv'
+alias rm='rm -iv'
+
+# +----+
+# | ls |
+# +----+
+
 alias ll='ls -alF --color=auto --human-readable --group-directories-first'
 alias la='ls -A --color=auto --human-readable --group-directories-first'
 alias l='ls -CF --color=auto --human-readable --group-directories-first'
+
+# +-----+
+# | Zsh |
+# +-----+
+
+alias d='dirs -v'
+for index ({1..9}) alias "$index"="cd +${index} > /dev/null"; unset index # directory stack
 
 alias sc='source ${ZDOTDIR}/.zshrc'
 alias myip="curl http://ipecho.net/plain; echo"
@@ -34,8 +51,11 @@ alias gwenmnt="sshfs josh@10.17.50.6:/ ./mnt/gwen"
 alias caddyformat="docker exec -w /config caddy caddy fmt -overwrite"
 alias caddyreload="docker exec -w /config caddy caddy reload"
 
-# docker
-alias dcup='docker compose -f /home/josh/docker/docker-compose.yml up -d' #brings up all containers if one is not defined after dcup
+# +--------+
+# | docker |
+# +--------+
+
+alias dcup='docker compose -f /home/josh/docker/docker-compose.yml up -d'  #brings up all containers if one is not defined after dcup
 alias dcdown='docker compose -f /home/josh/docker/docker-compose.yml stop' #brings down all containers if one is not defined after dcdown
 alias dcpull='docker compose -f /home/josh/docker/docker-compose.yml pull' #pulls all new images unless one is specified
 alias dcr='docker compose -f /home/josh/docker/docker-compose.yml restart'
