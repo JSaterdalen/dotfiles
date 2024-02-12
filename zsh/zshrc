@@ -54,6 +54,8 @@ if [[ $(command -v github-copilot-cli) ]]; then
   eval "$(github-copilot-cli alias -- "$0")"
 fi
 
+bindkey -s ^f "tmux-sessionizer\n"
+
 # bun completions
 [ -s "/Users/josh/.bun/_bun" ] && source "/Users/josh/.bun/_bun"
 
