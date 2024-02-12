@@ -16,6 +16,7 @@
     ~/.zshenv: zsh/zshenv
     ~/.config/zsh/.zshrc: zsh/zshrc
     ~/.config/karabiner/karabiner.json: karabiner.json
+    ~/.config/tmux/tmux.conf: tmux/tmux.conf
     ~/.asdfrc: asdfrc
     ~/.gitconfig: gitconfig
     ~/.gitignore_global: gitignore_global
