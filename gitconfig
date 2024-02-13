@@ -11,14 +11,11 @@
   path = ~/.gitconfig.local
 
 ; include for all repositories inside $HOME/git/[client]
-[includeIf "gitdir:~/git/shift7/"]
-	path = ~/git/shift7/.gitconfig.local
+[includeIf "gitdir:~/projects/work/"]
+	path = ~/projects/work/.gitconfig.local
 
-[includeIf "gitdir:~/git/dc/"]
-	path = ~/git/dc/.gitconfig.local
-
-[includeIf "gitdir:~/git/josh/"]
-	path = ~/git/josh/.gitconfig.local
+[includeIf "gitdir:~/projects/personal/"]
+	path = ~/projects/personal/.gitconfig.local
 
 [init]
 	defaultBranch = main
