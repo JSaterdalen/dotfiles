@@ -16,6 +16,8 @@ alias ..="cd .."
 alias rmdir='rmdir -v'
 alias ln='ln -v'
 alias grep='grep --color=auto'
+alias lg='lazygit'
+alias cl='clear'
 
 # +----+
 # | cp |
