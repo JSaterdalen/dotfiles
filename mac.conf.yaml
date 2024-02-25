@@ -2,28 +2,12 @@
     link:
       relink: true
 
-- clean:
-    ~/:
-      force: true
-    ~/.config:
-      recursive: true
-
-- create:
-    - ~/.config/zsh
-    - ~/.config/nvim
-
 - link:
-    ~/.zshenv: zsh/zshenv
-    ~/.config/zsh/.zshrc: zsh/zshrc
     ~/.config/karabiner/karabiner.json: karabiner.json
-    ~/.config/tmux/tmux.conf: tmux/tmux.conf
     ~/.asdfrc: asdfrc
-    ~/.gitconfig: gitconfig
-    ~/.gitignore_global: gitignore_global
     ~/.tool-versions: tool-versions
 
 - shell:
-    - [git submodule update --init --recursive, Installing submodules]
     - [
         defaults write com.googlecode.iterm2 PrefsCustomFolder -string "~/.dotfiles/iTerm/settings",
         Specify iTerm preferences directory,
