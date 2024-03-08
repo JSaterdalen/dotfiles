@@ -18,6 +18,7 @@
     ~/.config/tmux/tmux.conf: tmux/tmux.conf
     ~/.gitconfig: gitconfig
     ~/.gitignore_global: gitignore_global
+    ~/.config/lazy: nvim/LazyVim
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]

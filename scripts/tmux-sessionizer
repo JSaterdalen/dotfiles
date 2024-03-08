@@ -4,7 +4,7 @@ if [[ $# -eq 1 ]]; then
 	selected=$1
 else
 	if [[ $OSTYPE == "darwin"* ]]; then
-		selected=$(find ~/projects ~/projects/work ~/projects/personal ~/.config ~ -mindepth 1 -maxdepth 1 -type d | fzf)
+		selected=$(find -L ~/projects ~/projects/work ~/projects/personal ~/.config ~ -mindepth 1 -maxdepth 1 -type d | fzf)
 	else
 		selected=$(find ~/.docker ~/.config ~ -mindepth 1 -maxdepth 1 -type d | fzf)
 	fi
