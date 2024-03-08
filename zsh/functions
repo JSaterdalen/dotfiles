@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-lazy() { NVIM_APPNAME="lazy" nvim }
+lazy() { NVIM_APPNAME="lazy" nvim; }
 
 mkcd() {
   mkdir "$1"
