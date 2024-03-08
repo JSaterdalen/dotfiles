@@ -6,6 +6,7 @@
     ~/.config/karabiner/karabiner.json: karabiner.json
     ~/.asdfrc: asdfrc
     ~/.tool-versions: tool-versions
+    ~/.config/zsh/.zshrc: zsh/zshrc.mac
 
 - shell:
     - [

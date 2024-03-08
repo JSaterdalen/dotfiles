@@ -15,7 +15,6 @@
 
 - link:
     ~/.zshenv: zsh/zshenv
-    ~/.config/zsh/.zshrc: zsh/zshrc
     ~/.config/tmux/tmux.conf: tmux/tmux.conf
     ~/.gitconfig: gitconfig
     ~/.gitignore_global: gitignore_global
