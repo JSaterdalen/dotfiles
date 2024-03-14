@@ -10,7 +10,6 @@
 
 - create:
     - ~/.config/zsh
-    - ~/.config/nvim
     - ~/.config/tmux
 
 - link:
@@ -19,6 +18,7 @@
     ~/.gitconfig: gitconfig
     ~/.gitignore_global: gitignore_global
     ~/.config/lazy: nvim/LazyVim
+    ~/.config/nvim: nvim/nvim
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
