@@ -21,6 +21,8 @@ export HIST_STAMPS="yyyy-mm-dd"
 
 export PATH=$DOTFILES/scripts:$PATH
 export PATH=/usr/local/bin:$PATH
+export PATH=/usr/local/go/bin:$PATH
+export PATH=$PATH:$(go env GOPATH)/bin
 export PATH=$PATH:$HOME/.docker/bin
 export BUN_INSTALL="$HOME/.bun" 
 export PATH="$BUN_INSTALL/bin:$PATH"
