@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>AllowClipboardAccess</key>
+	<true/>
 	<key>AlternateMouseScroll</key>
 	<true/>
 	<key>Custom Color Presets</key>
@@ -2290,7 +2292,7 @@
 			<key>Minimum Contrast</key>
 			<integer>0</integer>
 			<key>Mouse Reporting</key>
-			<false/>
+			<true/>
 			<key>Mouse Reporting allow mouse wheel</key>
 			<false/>
 			<key>Movement Keys Scroll Outside Interactive Apps</key>
@@ -2358,7 +2360,7 @@
 			<key>Title Components</key>
 			<integer>6</integer>
 			<key>Transparency</key>
-			<real>0.10287566489361702</real>
+			<real>0.0</real>
 			<key>Unlimited Scrollback</key>
 			<false/>
 			<key>Use Bold Font</key>
