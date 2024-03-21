@@ -38,38 +38,9 @@ extract () {
 # open org
 sfo() {
   if [[ -z "$1" ]]; then 
-    sfdx alias:list
+    sf alias list
   else
-    sfdx force:org:open -u $1; 
-  fi
-}
-# open org in VSCode
-sfc() {
-  cd $HOME/sfdx/$1
-  code . 
-  clear
-}
-# display org api limits
-sflim() {
-  if [[ -z "$1" ]]; then 
-    sfdx alias:list
-  else
-    sfdx force:org:open -u $1; 
-  fi
-}
-# set default org in current project
-sfdef() {
-  sfdx config:set defaultusername=${1}
-}
-
-dxup() {
-  if npm list -g | grep -q '@salesforce/cli'
-  then
-    echo 'sfdx cli installed with node. Updating...'
-    npm install --global @salesforce/cli@latest
-  else
-    echo 'sfdx cli installed independently. Updating...'
-    sfdx update
+    sf org open -o $1;
   fi
 }
 
