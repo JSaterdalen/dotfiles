@@ -43,5 +43,7 @@ bindkey -s ^f "tmux-sessionizer\n"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
 [[ ! -f $DOTFILES/zsh/p10k.zsh ]] || source $DOTFILES/zsh/p10k.zsh
