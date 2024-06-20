@@ -4,15 +4,15 @@
 
 ![dotfiles screenshot][screenshot]
 
-These are the dotfiles I use on my Mac computers, currently running [macOS Monterey][macos]. Included are my configurations for tools like oh-my-zsh, asdf, and iTerm. This repo also contains personal bash/python scripts and my Brewfile.
+These are the dotfiles I use on my Mac computers, currently running [macOS Sonoma][macos]. Included are my configurations for tools like [asdf][asdf], iTerm, and [Helix][helix].
 
 [asdf]: https://github.com/asdf-vm/asdf
 [brew-bundle]: https://github.com/Homebrew/homebrew-bundle
-[macos]: https://www.apple.com/macos/monterey/
+[macos]: https://www.apple.com/macos/sonoma/
 [fira-code]: https://github.com/tonsky/FiraCode
+[helix]: https://helix-editor.com/
 [homebrew]: http://brew.sh
 [iterm2]: https://www.iterm2.com/
 [mac-bootstrap]: http://jsua.co/macos
-[oh-my-zsh]: https://github.com/ohmyzsh/ohmyzsh
 [screenshot]: img/dotfiles-screenshot.png
 [zsh]: https://www.zsh.org/
