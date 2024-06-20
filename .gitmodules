@@ -1,8 +1,3 @@
-[submodule ".dotbot"]
-	path = .dotbot
-	url = https://github.com/anishathalye/dotbot
-[submodule "dotbot"]
-	ignore = dirty
 [submodule "nvim/LazyVim"]
 	path = nvim/LazyVim
 	url = https://github.com/JSaterdalen/LazyVim

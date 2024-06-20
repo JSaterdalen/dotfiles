@@ -1,17 +1,33 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
-set -e
+# install tmux plugin manager
+if [ ! -d "$XDG_CONFIG_HOME/tmux/plugins" ]; then 
+  git clone https://github.com/tmux-plugins/tpm $XDG_CONFIG_HOME/tmux/plugins/tpm
+fi
 
-DEFAULT_CONFIG_PREFIX="default"
-CONFIG_SUFFIX=".conf.yaml"
-DOTBOT_DIR=".dotbot"
+STOW_FOLDERS=(asdf git helix karabiner nvim tmux zshrc)
 
-DOTBOT_BIN="bin/dotbot"
-BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-
-cd "${BASEDIR}"
-git submodule update --init --recursive "${DOTBOT_DIR}"
-
-for conf in ${DEFAULT_CONFIG_PREFIX} ${@}; do
-    "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "${conf}${CONFIG_SUFFIX}"
+for folder in $STOW_FOLDERS
+do 
+  echo "stow $folder"
+  stow -D $folder
+  stow --dotfiles $folder
 done
+
+if [ "$1" = "nix" ]; then
+  ln -sf $DOTFILES/zsh/zshrc.nix $ZDOTDIR/.zshrc 
+else
+  ln -sf $DOTFILES/zsh/zshrc.mac $ZDOTDIR/.zshrc
+fi
+
+# install submodules
+git submodule update --init --recursive
+
+# specify iTerm directory
+defaults write com.googlecode.iterm2 PrefsCustomFolder -string "~/.dotfiles/iTerm/settings"
+
+# enable custom directory
+defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true
+
+# save changes on exit
+defaults write "com.googlecode.iterm2" "NoSyncNeverRemindPrefsChangesLostForFile_selection" '0'
