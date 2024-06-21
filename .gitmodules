@@ -1,6 +1,0 @@
-[submodule "nvim/LazyVim"]
-	path = nvim/LazyVim
-	url = https://github.com/JSaterdalen/LazyVim
-[submodule "nvim/nvim"]
-	path = nvim/nvim
-	url = https://github.com/JSaterdalen/nvim
