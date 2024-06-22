@@ -1,0 +1,39 @@
+#!/usr/bin/env zsh
+
+export DOTFILES="$HOME/.dotfiles"
+
+# XDG
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CACHE_HOME="$HOME/.cache"
+
+# editor
+export EDITOR="hx"
+export VISUAL="hx"
+
+# zsh
+export ZDOTDIR=$XDG_CONFIG_HOME/zsh
+export ZSH_CACHE_DIR="$XDG_CACHE_HOME/zsh"
+
+path=("$DOTFILES/scripts" $path)
+path=("/usr/local/bin" $path)
+path=("/usr/local/go/bin" $path)
+path+=$(go env GOPATH)/bin
+path+=$HOME/.docker/bin
+
+export BUN_INSTALL="$HOME/.bun"
+path=("$BUN_INSTALL/bin" $path)
+
+case "$OSTYPE" in
+  darwin*)
+    HOST_NAME=$(scutil --get HostName)
+    export HOST_NAME
+  ;;
+  linux*)
+    SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+    export PATH="$PATH:/opt/nvim-linux64/bin"
+  ;;
+  *)
+    # ...
+  ;;
+esac

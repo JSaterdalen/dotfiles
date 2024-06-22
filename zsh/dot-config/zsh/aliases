@@ -2,7 +2,6 @@
 
 case "$OSTYPE" in
 darwin*)
-	alias ls='gls'
 	;;
 linux*) ;;
 *)
@@ -31,6 +30,7 @@ alias rm='rm -iv'
 # | ls |
 # +----+
 
+alias ls='gls'
 alias ll='ls -alF --color=auto --human-readable --group-directories-first'
 alias la='ls -A --color=auto --human-readable --group-directories-first'
 alias l='ls -CF --color=auto --human-readable --group-directories-first'

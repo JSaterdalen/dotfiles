@@ -13,5 +13,18 @@ select = "underline"
 [editor.indent-guides]
 render = true
 
+[editor.file-picker]
+hidden = false
+
+[keys.normal]
+"C-d" = ["page_down", "align_view_center"]
+"C-u" = ["page_up", "align_view_center"]
+
 [keys.insert]
 "C-c" = "normal_mode"
+"C-d" = ["page_down", "align_view_center"]
+"C-u" = ["page_up", "align_view_center"]
+
+[keys.select]
+"C-d" = ["page_down", "align_view_center"]
+"C-u" = ["page_up", "align_view_center"]

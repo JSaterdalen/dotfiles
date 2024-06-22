@@ -5,7 +5,11 @@ if [ ! -d "$XDG_CONFIG_HOME/tmux/plugins" ]; then
   git clone https://github.com/tmux-plugins/tpm $XDG_CONFIG_HOME/tmux/plugins/tpm
 fi
 
-STOW_FOLDERS=(asdf git helix karabiner nvim tmux zshrc)
+if [ ! -d "$ZDOTDIR" ]; then
+  mkdir -p $ZDOTDIR
+fi
+
+STOW_FOLDERS=(asdf git helix karabiner nvim tmux zsh)
 
 for folder in $STOW_FOLDERS
 do 
@@ -13,12 +17,6 @@ do
   stow -D $folder
   stow --dotfiles $folder
 done
-
-if [ "$1" = "nix" ]; then
-  ln -sf $DOTFILES/zsh/zshrc.nix $ZDOTDIR/.zshrc 
-else
-  ln -sf $DOTFILES/zsh/zshrc.mac $ZDOTDIR/.zshrc
-fi
 
 # install submodules
 git submodule update --init --recursive
