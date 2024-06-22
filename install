@@ -9,6 +9,10 @@ if [ ! -d "$ZDOTDIR" ]; then
   mkdir -p $ZDOTDIR
 fi
 
+if [ -f ~/.zshenv ]; then
+  rm ~/.zshenv
+fi
+
 STOW_FOLDERS=(asdf git helix karabiner nvim tmux zsh)
 
 for folder in $STOW_FOLDERS
