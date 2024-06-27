@@ -29,6 +29,7 @@ export JAVA_HOME=/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home
 ### append completions to fpath
 fpath=(${ASDF_DIR}/completions $fpath)
 fpath=(${ZDOTDIR:-$HOME}/.zsh_plugins/zsh-users/zsh-completions/src $fpath)
+fpath=(${DOTFILES}/sd $fpath)
 
 if [[ $(command -v brew) ]]; then
   FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"

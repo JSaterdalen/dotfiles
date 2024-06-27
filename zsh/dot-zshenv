@@ -1,6 +1,7 @@
 #!/usr/bin/env zsh
 
 export DOTFILES="$HOME/.dotfiles"
+export SD_ROOT="$DOTFILES/scripts"
 
 # XDG
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -29,6 +30,7 @@ export ZDOTDIR=$XDG_CONFIG_HOME/zsh
 export ZSH_CACHE_DIR="$XDG_CACHE_HOME/zsh"
 
 path=("$DOTFILES/scripts" $path)
+path=("$DOTFILES/sd" $path)
 path=("/usr/local/bin" $path)
 path=("/usr/local/go/bin" $path)
 path+=$(go env GOPATH)/bin
