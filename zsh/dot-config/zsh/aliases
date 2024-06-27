@@ -13,6 +13,7 @@ esac
 alias vim='nvim'
 alias ..="cd .."
 alias rmdir='rmdir -v'
+alias mkdir='mkdir -p'
 alias ln='ln -v'
 alias grep='grep --color=auto'
 alias lg='lazygit'
