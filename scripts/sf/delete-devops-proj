@@ -1,0 +1,52 @@
+#!/usr/bin/env bash
+
+# delete ALL projects in an org from DevOps Center
+
+set -euo pipefail
+
+temp_dir=$HOME/temp
+
+objects=(
+  sf_devops__Back_Sync__c
+  sf_devops__Change_Submission__c
+  sf_devops__Pipeline__c
+  sf_devops__Project__c
+  sf_devops__Deployment_Result__c
+  sf_devops__Async_Operation_Result__c
+  sf_devops__Branch__c
+  sf_devops__Change_Bundle__c
+  sf_devops__Change_Bundle_Install__c
+  sf_devops__Deploy_Component__c
+  sf_devops__Environment__c
+  sf_devops__Hidden_Remote_Change__c
+  sf_devops__Merge_Result__c
+  sf_devops__Object_Activity__c
+  sf_devops__Pipeline_Stage__c
+  sf_devops__Remote_Change__c
+  sf_devops__Repository__c
+  sf_devops__Submit_Component__c
+  sf_devops__Vcs_Event__c
+  sf_devops__Work_Item__c
+  sf_devops__Work_Item_Promote__c
+)
+
+for o in "${objects[@]}"; do
+  echo "Processing $o records"
+
+  if [[ ! -d $temp_dir ]]; then
+    mkdir $temp_dir
+  fi
+
+  query="sf data query -o dcs -q 'SELECT Id FROM $o' -r csv > $temp_dir/query.csv"
+  delete="sf data delete bulk -w 5 -o dcs -s $o -f $temp_dir/query.csv --verbose"
+
+  eval "$query"
+  if ! grep -q "Id" "$temp_dir/query.csv"; then
+    continue;
+  fi
+
+  echo "Deleting $o records"
+  eval "$delete"
+done
+
+echo "Successfully deleted all DevOps Center records"
