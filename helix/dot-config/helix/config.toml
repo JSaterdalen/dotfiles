@@ -17,14 +17,19 @@ render = true
 hidden = false
 
 [keys.normal]
-"C-d" = ["page_down", "align_view_center"]
-"C-u" = ["page_up", "align_view_center"]
+# "C-d" = ["page_down", "align_view_center"]
+# "C-u" = ["page_up", "align_view_center"]
+c = ["trim_selections", "change_selection"]
+"C-h" = "jump_view_left"
+"C-l" = "jump_view_right"
+"C-k" = "jump_view_up"
+"C-j" = "jump_view_down"
 
 [keys.insert]
 "C-c" = "normal_mode"
-"C-d" = ["page_down", "align_view_center"]
-"C-u" = ["page_up", "align_view_center"]
+# "C-d" = ["page_down", "align_view_center"]
+# "C-u" = ["page_up", "align_view_center"]
 
-[keys.select]
-"C-d" = ["page_down", "align_view_center"]
-"C-u" = ["page_up", "align_view_center"]
+# [keys.select]
+# "C-d" = ["page_down", "align_view_center"]
+# "C-u" = ["page_up", "align_view_center"]
