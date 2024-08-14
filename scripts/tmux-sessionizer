@@ -1,10 +1,17 @@
 #!/usr/bin/env bash
 
+folders=("$HOME/projects" "$HOME/projects/personal" "$HOME/.config" "$HOME")
+work_folders=("$HOME/projects/work" "$HOME/projects/work/sfdx")
+
+if [ -d "$HOME/projects/work" ]; then
+	folders+=("${work_folders[@]}")
+fi
+
 if [[ $# -eq 1 ]]; then
 	selected=$1
 else
 	if [[ $OSTYPE == "darwin"* ]]; then
-		selected=$(find -L ~/projects ~/projects/work ~/projects/personal ~/.config ~ -mindepth 1 -maxdepth 1 -type d | fzf)
+		selected=$(find -L "${folders[@]}" -mindepth 1 -maxdepth 1 -type d | fzf)
 	else
 		selected=$(find ~/docker ~/.config ~ -mindepth 1 -maxdepth 1 -type d | fzf)
 	fi
