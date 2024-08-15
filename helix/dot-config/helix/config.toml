@@ -19,11 +19,14 @@ hidden = false
 [keys.normal]
 # "C-d" = ["page_down", "align_view_center"]
 # "C-u" = ["page_up", "align_view_center"]
-c = ["trim_selections", "change_selection"]
+c = ["trim_selections", "change_selection_noyank"]
 "C-h" = "jump_view_left"
 "C-l" = "jump_view_right"
 "C-k" = "jump_view_up"
 "C-j" = "jump_view_down"
+
+# prevent change and from overwriting register
+"A-c" = "change_selection"
 
 [keys.insert]
 "C-c" = "normal_mode"
