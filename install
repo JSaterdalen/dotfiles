@@ -13,7 +13,7 @@ if [ -f ~/.zshenv ]; then
   rm ~/.zshenv
 fi
 
-STOW_FOLDERS=(asdf git helix karabiner nvim tmux zsh)
+STOW_FOLDERS=(asdf git helix karabiner tmux zsh)
 
 for folder in $STOW_FOLDERS
 do 
