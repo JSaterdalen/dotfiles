@@ -33,6 +33,7 @@ path=("$DOTFILES/scripts" $path)
 path=("$DOTFILES/sd" $path)
 path=("/usr/local/bin" $path)
 path=("/usr/local/go/bin" $path)
+path=("opt/homebrew/bin" $path)
 path+=$(go env GOPATH)/bin
 path+=$HOME/.docker/bin
 
