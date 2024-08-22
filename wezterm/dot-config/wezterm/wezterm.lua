@@ -11,7 +11,8 @@ config.color_scheme = 'Catppuccin Frappe'
 config.font = wezterm.font('CaskaydiaCove Nerd Font')
 config.font_size = 17
 config.window_decorations = 'RESIZE'
-config.enable_tab_bar = false
+config.enable_tab_bar = true
+config.use_fancy_tab_bar = false
 
 -- and finally, return the configuration to wezterm
 return config
