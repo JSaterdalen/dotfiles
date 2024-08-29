@@ -20,14 +20,16 @@ setopt AUTO_PUSHD           # Push the old directory onto the stack on cd.
 setopt PUSHD_IGNORE_DUPS    # Do not store duplicates in the stack.
 setopt PUSHD_SILENT         # Do not print the directory stack after pushd or popd.
 
+eval "$($HOME/.local/bin/mise activate zsh)"
+
 ## asdf
-. $HOME/.asdf/asdf.sh
+# . $HOME/.asdf/asdf.sh
 ### set JAVA_HOME
 # . ~/.asdf/plugins/java/set-java-home.zsh
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home
+# export JAVA_HOME=/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home
 
 ### append completions to fpath
-fpath=(${ASDF_DIR}/completions $fpath)
+# fpath=(${ASDF_DIR}/completions $fpath)
 fpath=(${ZDOTDIR:-$HOME}/.zsh_plugins/zsh-users/zsh-completions/src $fpath)
 fpath=(${DOTFILES}/sd $fpath)
 
@@ -43,6 +45,8 @@ bindkey -s ^f "tmux-sessionizer\n"
 
 # bun completions
 [ -s "/Users/josh/.bun/_bun" ] && source "/Users/josh/.bun/_bun"
+
+[ -s "$HOME/.local/share/zsh/site-functions/_mise" ] && source "$HOME/.local/share/zsh/site-functions/_mise"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
