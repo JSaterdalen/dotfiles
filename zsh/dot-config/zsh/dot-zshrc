@@ -28,7 +28,7 @@ if [[ $(command -v brew) ]]; then
 fi
 
 if [[ $(command -v sf) ]]; then
-  eval $(sf autocomplete:script zsh)
+  eval $(sf autocomplete script zsh)
 fi
 
 bindkey -s ^f "tmux-sessionizer\n"
