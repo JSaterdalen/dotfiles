@@ -19,6 +19,9 @@ alias grep='grep --color=auto'
 alias lg='lazygit'
 alias cl='clear'
 
+alias cc="claude --dangerously-skip-permissions"
+alias claude-monitor='cd ~/opt/Claude-Code-Usage-Monitor && source .venv/bin/activate && ./ccusage_monitor.py --plan max5 --timezone US/Chicago'
+
 # +----+
 # | cp |
 # +----+
