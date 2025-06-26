@@ -37,6 +37,8 @@ path=("opt/homebrew/bin" $path)
 path+=$(go env GOPATH)/bin
 path+=$HOME/.docker/bin
 
+eval "$(/opt/homebrew/bin/mise activate zsh --shims)"
+
 export BUN_INSTALL="$HOME/.bun"
 path=("$BUN_INSTALL/bin" $path)
 
