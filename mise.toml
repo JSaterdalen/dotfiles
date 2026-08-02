@@ -1,0 +1,37 @@
+# mise: single declarative config for this machine.
+# Provision with:  cd ~/.dotfiles && mise bootstrap            (personal/work: add -E personal | -E work)
+# This file is symlinked to ~/.config/mise/config.toml so [tools] apply globally.
+
+[tools]
+java = "zulu-21"
+node = "latest"
+poetry = "latest"
+
+[settings]
+idiomatic_version_file_enable_tools = ["python"]
+# python.uv_venv_auto = true
+
+# --- dotfiles: symlinks (replaces GNU stow) --------------------------------
+[dotfiles]
+"~/.gitconfig"               = { source = "~/.dotfiles/git/dot-gitconfig", mode = "symlink" }
+"~/.gitignore_global"        = { source = "~/.dotfiles/git/dot-gitignore_global", mode = "symlink" }
+"~/.zshenv"                  = { source = "~/.dotfiles/zsh/dot-zshenv", mode = "symlink" }
+"~/.config/zsh/.zshrc"       = { source = "~/.dotfiles/zsh/dot-config/zsh/dot-zshrc", mode = "symlink" }
+"~/.config/zsh/aliases"      = { source = "~/.dotfiles/zsh/dot-config/zsh/aliases", mode = "symlink" }
+"~/.config/zsh/functions"    = { source = "~/.dotfiles/zsh/dot-config/zsh/functions", mode = "symlink" }
+"~/.config/zsh/plugins"      = { source = "~/.dotfiles/zsh/dot-config/zsh/plugins", mode = "symlink" }
+"~/.config/zsh/p10k.zsh"     = { source = "~/.dotfiles/zsh/dot-config/zsh/p10k.zsh", mode = "symlink" }
+"~/.config/helix"            = { source = "~/.dotfiles/helix/dot-config/helix", mode = "symlink" }
+"~/.config/karabiner"        = { source = "~/.dotfiles/karabiner/dot-config/karabiner", mode = "symlink" }
+"~/.config/ghostty"          = { source = "~/.dotfiles/ghostty/dot-config/ghostty", mode = "symlink" }
+"~/.config/mise/config.toml" = { source = "~/.dotfiles/mise.toml", mode = "symlink" }
+
+# --- macOS defaults (replaces the old install script's `defaults write`) ----
+[bootstrap.macos.defaults]
+"com.googlecode.iterm2" = { PrefsCustomFolder = "~/.dotfiles/iTerm/settings", LoadPrefsFromCustomFolder = true, NoSyncNeverRemindPrefsChangesLostForFile_selection = "0" }
+
+# --- packages: Homebrew still owns packages (it owns the installed casks);
+#     mise bootstrap runs `brew bundle` for us as the final step. ------------
+[tasks.bootstrap]
+description = "Install Homebrew packages from the Brewfile"
+run = "brew bundle --file $HOME/.dotfiles/Brewfile"

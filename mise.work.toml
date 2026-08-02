@@ -1,0 +1,7 @@
+# Work machine (josh-dc-macbook). Provision with: mise bootstrap -E work
+[tasks.bootstrap]
+description = "Install Homebrew packages (base + work)"
+run = [
+  "brew bundle --file $HOME/.dotfiles/Brewfile",
+  "brew bundle --file $HOME/.dotfiles/machines/josh-dc-macbook/Brewfile",
+]
