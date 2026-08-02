@@ -11,22 +11,26 @@ symlinks, tools, macOS defaults, and Homebrew packages. Shell is [zsh][zsh] with
 git clone https://github.com/JSaterdalen/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
 mise trust
-mise bootstrap -E personal   # or: -E work
+mise bootstrap
 ```
 
 `mise bootstrap` symlinks the dotfiles (`[dotfiles]`), writes the iTerm macOS
 defaults (`[bootstrap.macos.defaults]`), installs the tool versions (`[tools]`),
-and runs the `bootstrap` task, which `brew bundle`s the Brewfile plus the
-machine-specific one under `machines/`.
+and runs the `bootstrap` task, which `brew bundle`s the Brewfile.
+
+One Brewfile covers every machine. Regenerate it from what's actually installed
+with:
+
+```sh
+brew bundle dump --file ~/.dotfiles/Brewfile --no-vscode --force
+```
 
 ## Layout
 
 | Path                | What                                             |
 | ------------------- | ------------------------------------------------ |
 | `mise.toml`         | tools, settings, dotfile symlinks, macOS defaults, brew task |
-| `mise.{personal,work}.toml` | per-machine Homebrew bundles              |
-| `Brewfile`          | base Homebrew formulae + casks                   |
-| `machines/*/Brewfile` | per-machine Homebrew extras                     |
+| `Brewfile`          | Homebrew taps, formulae, casks, and Mac App Store apps |
 | `zsh/`              | `zshenv` / `zprofile` / `zshrc` / `path.zsh`, aliases, functions, plugins, p10k |
 | `git/` `helix/` `karabiner/` `ghostty/` `iTerm/` | app configs        |
 | `scripts/` `sd/`    | scripts on `$PATH`                               |

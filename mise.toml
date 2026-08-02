@@ -1,5 +1,5 @@
 # mise: single declarative config for this machine.
-# Provision with:  cd ~/.dotfiles && mise bootstrap            (personal/work: add -E personal | -E work)
+# Provision with:  cd ~/.dotfiles && mise bootstrap
 # This file is symlinked to ~/.config/mise/config.toml so [tools] apply globally.
 
 [tools]

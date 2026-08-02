@@ -7,8 +7,7 @@
 # system paths first. Re-assert our ordering on top of it.
 source "$ZDOTDIR/path.zsh"
 
-# Used by scripts/bb to pick the per-machine Brewfile. Forks `scutil`, hence
-# login-only; bb computes it itself when unset.
+# Handy in prompts and ad-hoc scripts. Forks `scutil`, hence login-only.
 if [[ $OSTYPE == darwin* ]]; then
   HOST_NAME=$(scutil --get HostName 2>/dev/null) && export HOST_NAME
 fi
