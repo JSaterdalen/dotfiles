@@ -31,8 +31,6 @@ if [[ $(command -v sf) ]]; then
   eval $(sf autocomplete script zsh)
 fi
 
-bindkey -s ^f "tmux-sessionizer\n"
-
 # bun completions
 [ -s "/Users/josh/.bun/_bun" ] && source "/Users/josh/.bun/_bun"
 
@@ -55,4 +53,3 @@ setopt hist_ignore_all_dups
 setopt hist_save_no_dups
 setopt hist_ignore_dups
 setopt hist_find_no_dups
-# eval "$(mise activate zsh)"
