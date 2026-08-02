@@ -12,18 +12,20 @@ idiomatic_version_file_enable_tools = ["python"]
 # python.uv_venv_auto = true
 
 # --- dotfiles: symlinks (replaces GNU stow) --------------------------------
+# Source paths are plain names; only the target needs the leading dot, so the
+# old stow `dot-` prefix / `pkg/dot-config/pkg` nesting is gone.
 [dotfiles]
-"~/.gitconfig"               = { source = "~/.dotfiles/git/dot-gitconfig", mode = "symlink" }
-"~/.gitignore_global"        = { source = "~/.dotfiles/git/dot-gitignore_global", mode = "symlink" }
-"~/.zshenv"                  = { source = "~/.dotfiles/zsh/dot-zshenv", mode = "symlink" }
-"~/.config/zsh/.zshrc"       = { source = "~/.dotfiles/zsh/dot-config/zsh/dot-zshrc", mode = "symlink" }
-"~/.config/zsh/aliases"      = { source = "~/.dotfiles/zsh/dot-config/zsh/aliases", mode = "symlink" }
-"~/.config/zsh/functions"    = { source = "~/.dotfiles/zsh/dot-config/zsh/functions", mode = "symlink" }
-"~/.config/zsh/plugins"      = { source = "~/.dotfiles/zsh/dot-config/zsh/plugins", mode = "symlink" }
-"~/.config/zsh/p10k.zsh"     = { source = "~/.dotfiles/zsh/dot-config/zsh/p10k.zsh", mode = "symlink" }
-"~/.config/helix"            = { source = "~/.dotfiles/helix/dot-config/helix", mode = "symlink" }
-"~/.config/karabiner"        = { source = "~/.dotfiles/karabiner/dot-config/karabiner", mode = "symlink" }
-"~/.config/ghostty"          = { source = "~/.dotfiles/ghostty/dot-config/ghostty", mode = "symlink" }
+"~/.gitconfig"               = { source = "~/.dotfiles/git/gitconfig", mode = "symlink" }
+"~/.gitignore_global"        = { source = "~/.dotfiles/git/gitignore_global", mode = "symlink" }
+"~/.zshenv"                  = { source = "~/.dotfiles/zsh/zshenv", mode = "symlink" }
+"~/.config/zsh/.zshrc"       = { source = "~/.dotfiles/zsh/zshrc", mode = "symlink" }
+"~/.config/zsh/aliases"      = { source = "~/.dotfiles/zsh/aliases", mode = "symlink" }
+"~/.config/zsh/functions"    = { source = "~/.dotfiles/zsh/functions", mode = "symlink" }
+"~/.config/zsh/plugins"      = { source = "~/.dotfiles/zsh/plugins", mode = "symlink" }
+"~/.config/zsh/p10k.zsh"     = { source = "~/.dotfiles/zsh/p10k.zsh", mode = "symlink" }
+"~/.config/helix"            = { source = "~/.dotfiles/helix", mode = "symlink" }
+"~/.config/karabiner"        = { source = "~/.dotfiles/karabiner", mode = "symlink" }
+"~/.config/ghostty"          = { source = "~/.dotfiles/ghostty", mode = "symlink" }
 "~/.config/mise/config.toml" = { source = "~/.dotfiles/mise.toml", mode = "symlink" }
 
 # --- macOS defaults (replaces the old install script's `defaults write`) ----
