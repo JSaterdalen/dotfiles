@@ -27,12 +27,29 @@ machine-specific one under `machines/`.
 | `mise.{personal,work}.toml` | per-machine Homebrew bundles              |
 | `Brewfile`          | base Homebrew formulae + casks                   |
 | `machines/*/Brewfile` | per-machine Homebrew extras                     |
-| `zsh/`              | `.zshenv` + `.zshrc`, aliases, functions, plugins, p10k |
+| `zsh/`              | `zshenv` / `zprofile` / `zshrc` / `path.zsh`, aliases, functions, plugins, p10k |
 | `git/` `helix/` `karabiner/` `ghostty/` `iTerm/` | app configs        |
 | `scripts/` `sd/`    | scripts on `$PATH`                               |
 
 Everyday changes are made directly in `~/.dotfiles` (the symlinks point here);
 re-run `mise bootstrap dotfiles apply` if you add a new dotfile entry.
+
+## zsh startup
+
+`~/.zshenv` (also linked as `$ZDOTDIR/.zshenv`, since zsh stops consulting
+`~/.zshenv` once `ZDOTDIR` is exported) sets XDG vars, `ZDOTDIR`, and `$EDITOR`,
+then sources `path.zsh`. It runs for *every* zsh, so it forks nothing.
+
+`.zprofile` runs once per login shell and owns anything that shells out. It
+re-sources `path.zsh` because macOS's `/etc/zprofile` runs `path_helper`, which
+rebuilds `PATH` with the system entries first; `typeset -U path` makes the
+second pass reorder rather than duplicate.
+
+`.zshrc` is interactive-only: completions, plugins, prompt, history.
+
+Config lives in `$ZDOTDIR`; anything zsh *generates* does not — history goes to
+`$XDG_STATE_HOME/zsh`, the completion dump to `$XDG_CACHE_HOME/zsh`, and cloned
+plugins to `$XDG_DATA_HOME/zsh/plugins`.
 
 [mise]: https://mise.jdx.dev/
 [zsh]: https://www.zsh.org/

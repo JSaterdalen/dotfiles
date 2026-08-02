@@ -1,4 +1,6 @@
 #!/usr/bin/env zsh
+#
+# Interactive shells only.
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.config/zsh/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -6,6 +8,29 @@
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
+
+# +-------------+
+# | COMPLETIONS |
+# +-------------+
+# fpath must be complete before compinit, and compinit before anything that
+# calls compdef. We run it explicitly with -d so the dump lands in the cache:
+# bun's completion script calls a bare `compinit` (dumping to ZDOTDIR) unless
+# `command -v compinit` already resolves, and zsh-autocomplete skips its own
+# call once _comp_setup is set.
+
+fpath=("$ZSH_DATA_DIR/plugins/zsh-users/zsh-completions/src" $fpath)
+fpath=("$DOTFILES/sd" $fpath)
+[[ -n $HOMEBREW_PREFIX ]] && fpath=("$HOMEBREW_PREFIX/share/zsh/site-functions" $fpath)
+
+# sf CLI: add its completion directory straight to fpath instead of sourcing
+# `sf autocomplete script zsh`. That script's setup file adds this same entry
+# and then calls a bare `compinit`, which rewrites the dump into ZDOTDIR.
+# Regenerate the directory with `sf autocomplete --refresh-cache`.
+[[ -d $HOME/Library/Caches/sf/autocomplete/functions/zsh ]] &&
+  fpath=("$HOME/Library/Caches/sf/autocomplete/functions/zsh" $fpath)
+
+autoload -Uz compinit
+compinit -d "$ZSH_CACHE_DIR/zcompdump"
 
 source $ZDOTDIR/plugins
 source $ZDOTDIR/aliases
@@ -20,35 +45,30 @@ setopt AUTO_PUSHD           # Push the old directory onto the stack on cd.
 setopt PUSHD_IGNORE_DUPS    # Do not store duplicates in the stack.
 setopt PUSHD_SILENT         # Do not print the directory stack after pushd or popd.
 
-fpath=(${ZDOTDIR:-$HOME}/.zsh_plugins/zsh-users/zsh-completions/src $fpath)
-fpath=(${DOTFILES}/sd $fpath)
-
-if [[ $(command -v brew) ]]; then
-  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
-fi
-
-# sf CLI completions: cache the (static) setup line once instead of spawning
-# the Node CLI on every shell start. Refresh with `sf autocomplete --refresh-cache`.
-if [[ $(command -v sf) ]]; then
-  [[ -f $ZSH_CACHE_DIR/sf.zsh ]] || sf autocomplete script zsh > $ZSH_CACHE_DIR/sf.zsh
-  source $ZSH_CACHE_DIR/sf.zsh
-fi
+# +-------+
+# | TOOLS |
+# +-------+
 
 # bun completions
-[ -s "/Users/josh/.bun/_bun" ] && source "/Users/josh/.bun/_bun"
+[[ -s "$BUN_INSTALL/_bun" ]] && source "$BUN_INSTALL/_bun"
 
 # mise: interactive (hook-based) activation; shims are on PATH from .zshenv
 eval "$(mise activate zsh)"
-[ -s "$HOME/.local/share/zsh/site-functions/_mise" ] && source "$HOME/.local/share/zsh/site-functions/_mise"
+[[ -s "$XDG_DATA_HOME/zsh/site-functions/_mise" ]] && source "$XDG_DATA_HOME/zsh/site-functions/_mise"
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
 
-# To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
+# To customize prompt, run `p10k configure` or edit $ZDOTDIR/p10k.zsh.
 [[ ! -f $ZDOTDIR/p10k.zsh ]] || source $ZDOTDIR/p10k.zsh
 
-# History
+# +---------+
+# | HISTORY |
+# +---------+
+# Kept in XDG_STATE_HOME, not ZDOTDIR -- history is state, not config. This
+# must come after /etc/zshrc, which points HISTFILE at $ZDOTDIR/.zsh_history.
+
 HISTSIZE=5000
-HISTFILE=$ZDOTDIR/.zsh_history
+HISTFILE=$ZSH_STATE_DIR/history
 SAVEHIST=$HISTSIZE
 HISTDUP=erase
 setopt appendhistory

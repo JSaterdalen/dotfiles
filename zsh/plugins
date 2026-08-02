@@ -1,4 +1,9 @@
 #!/usr/bin/env zsh
+#
+# Cloned plugins are data, not config, so they live under XDG_DATA_HOME rather
+# than in ZDOTDIR next to the files we actually track.
+
+plugin_dir="${ZSH_DATA_DIR:-$HOME/.local/share/zsh}/plugins"
 
 github_plugins=(
   marlonrichert/zsh-autocomplete
@@ -10,14 +15,14 @@ github_plugins=(
 
 for plugin in $github_plugins; do
   # clone the plugin from github if it doesn't exist
-  if [[ ! -d ${ZDOTDIR:-$HOME}/.zsh_plugins/$plugin ]]; then
-    mkdir -p ${ZDOTDIR:-$HOME}/.zsh_plugins/${plugin%/*}
-    git clone --depth 1 --recursive https://github.com/$plugin.git ${ZDOTDIR:-$HOME}/.zsh_plugins/$plugin
+  if [[ ! -d $plugin_dir/$plugin ]]; then
+    mkdir -p $plugin_dir/${plugin%/*}
+    git clone --depth 1 --recursive https://github.com/$plugin.git $plugin_dir/$plugin
   fi
   # load the plugin
   for initscript in ${plugin#*/}.zsh ${plugin#*/}.zsh-theme ${plugin#*/}.plugin.zsh ${plugin#*/}.sh; do
-    if [[ -f ${ZDOTDIR:-$HOME}/.zsh_plugins/$plugin/$initscript ]]; then
-      source ${ZDOTDIR:-$HOME}/.zsh_plugins/$plugin/$initscript
+    if [[ -f $plugin_dir/$plugin/$initscript ]]; then
+      source $plugin_dir/$plugin/$initscript
       break
     fi
   done
@@ -27,3 +32,4 @@ done
 unset github_plugins
 unset plugin
 unset initscript
+unset plugin_dir

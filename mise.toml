@@ -18,7 +18,12 @@ idiomatic_version_file_enable_tools = ["python"]
 "~/.gitconfig"               = { source = "~/.dotfiles/git/gitconfig", mode = "symlink" }
 "~/.gitignore_global"        = { source = "~/.dotfiles/git/gitignore_global", mode = "symlink" }
 "~/.zshenv"                  = { source = "~/.dotfiles/zsh/zshenv", mode = "symlink" }
+# Also inside ZDOTDIR: zsh reads $ZDOTDIR/.zshenv, so once ZDOTDIR is exported
+# (i.e. any nested zsh) it stops looking at ~/.zshenv. Same file either way.
+"~/.config/zsh/.zshenv"      = { source = "~/.dotfiles/zsh/zshenv", mode = "symlink" }
+"~/.config/zsh/.zprofile"    = { source = "~/.dotfiles/zsh/zprofile", mode = "symlink" }
 "~/.config/zsh/.zshrc"       = { source = "~/.dotfiles/zsh/zshrc", mode = "symlink" }
+"~/.config/zsh/path.zsh"     = { source = "~/.dotfiles/zsh/path.zsh", mode = "symlink" }
 "~/.config/zsh/aliases"      = { source = "~/.dotfiles/zsh/aliases", mode = "symlink" }
 "~/.config/zsh/functions"    = { source = "~/.dotfiles/zsh/functions", mode = "symlink" }
 "~/.config/zsh/plugins"      = { source = "~/.dotfiles/zsh/plugins", mode = "symlink" }

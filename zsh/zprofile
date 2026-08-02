@@ -1,0 +1,20 @@
+#!/usr/bin/env zsh
+#
+# Login shells only -- on macOS that means once per terminal window/tab.
+# This is where anything that forks a process belongs.
+
+# macOS's /etc/zprofile has just run `path_helper`, which rebuilt PATH with the
+# system paths first. Re-assert our ordering on top of it.
+source "$ZDOTDIR/path.zsh"
+
+# Used by scripts/bb to pick the per-machine Brewfile. Forks `scutil`, hence
+# login-only; bb computes it itself when unset.
+if [[ $OSTYPE == darwin* ]]; then
+  HOST_NAME=$(scutil --get HostName 2>/dev/null) && export HOST_NAME
+fi
+
+# Added by OrbStack: command-line tools and integration
+# This won't be added again if you remove it.
+source ~/.orbstack/shell/init.zsh 2>/dev/null || :
+
+return 0

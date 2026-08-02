@@ -1,4 +1,8 @@
 #!/usr/bin/env zsh
+#
+# Sourced by EVERY zsh: scripts, `zsh -c`, editor subprocesses, the lot.
+# Keep it fork-free -- anything that shells out belongs in .zprofile, which
+# runs once per login shell.
 
 export DOTFILES="$HOME/.dotfiles"
 export SD_ROOT="$DOTFILES/scripts"
@@ -6,53 +10,27 @@ export SD_ROOT="$DOTFILES/scripts"
 # XDG
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_STATE_HOME="$HOME/.local/state"
 export XDG_CACHE_HOME="$HOME/.cache"
-
-# homebrew initialization
-if [[ -f /opt/homebrew/bin/brew ]]; then
-    # Homebrew exists at /opt/homebrew for arm64 macos
-    eval $(/opt/homebrew/bin/brew shellenv)
-elif [[ -f /usr/local/bin/brew ]]; then
-    # or at /usr/local for intel macos
-    eval $(/usr/local/bin/brew shellenv)
-elif [[ -d /home/linuxbrew/.linuxbrew ]]; then
-    # or from linuxbrew
-    test -d ~/.linuxbrew && eval "$(~/.linuxbrew/bin/brew shellenv)"
-    test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-fi
 
 # editor
 export EDITOR="hx"
 export VISUAL="hx"
 
-# zsh
-export ZDOTDIR=$XDG_CONFIG_HOME/zsh
-export ZSH_CACHE_DIR="$XDG_CACHE_HOME/zsh"
+# zsh: config lives in ZDOTDIR, everything zsh *generates* goes elsewhere
+export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
+export ZSH_CACHE_DIR="$XDG_CACHE_HOME/zsh"     # .zcompdump, completion caches
+export ZSH_STATE_DIR="$XDG_STATE_HOME/zsh"     # history
+export ZSH_DATA_DIR="$XDG_DATA_HOME/zsh"       # cloned plugins
 [[ -d $ZSH_CACHE_DIR ]] || mkdir -p $ZSH_CACHE_DIR
+[[ -d $ZSH_STATE_DIR ]] || mkdir -p $ZSH_STATE_DIR
 
-path=("$DOTFILES/scripts" $path)
-path=("$DOTFILES/sd" $path)
-path=("$HOME/.local/bin" $path)
-path=("/usr/local/bin" $path)
-path+=$HOME/go/bin
-path+=$HOME/.docker/bin
+# Keep path/fpath de-duplicated so re-sourcing path.zsh from .zprofile
+# reorders rather than appends. Must precede the first path assignment.
+typeset -U path fpath
 
-# mise shims for non-interactive shells; interactive activation lives in .zshrc
-path=("$HOME/.local/share/mise/shims" $path)
+source "$ZDOTDIR/path.zsh"
 
-export BUN_INSTALL="$HOME/.bun"
-path=("$BUN_INSTALL/bin" $path)
+[[ $OSTYPE == linux* ]] && export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
-case "$OSTYPE" in
-  darwin*)
-    HOST_NAME=$(scutil --get HostName)
-    export HOST_NAME
-  ;;
-  linux*)
-    SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
-    export PATH="$PATH:/opt/nvim-linux64/bin"
-  ;;
-  *)
-    # ...
-  ;;
-esac
+return 0
