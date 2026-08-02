@@ -37,6 +37,8 @@ fi
 # bun completions
 [ -s "/Users/josh/.bun/_bun" ] && source "/Users/josh/.bun/_bun"
 
+# mise: interactive (hook-based) activation; shims are on PATH from .zshenv
+eval "$(mise activate zsh)"
 [ -s "$HOME/.local/share/zsh/site-functions/_mise" ] && source "$HOME/.local/share/zsh/site-functions/_mise"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

@@ -28,16 +28,17 @@ export VISUAL="hx"
 # zsh
 export ZDOTDIR=$XDG_CONFIG_HOME/zsh
 export ZSH_CACHE_DIR="$XDG_CACHE_HOME/zsh"
+[[ -d $ZSH_CACHE_DIR ]] || mkdir -p $ZSH_CACHE_DIR
 
 path=("$DOTFILES/scripts" $path)
 path=("$DOTFILES/sd" $path)
+path=("$HOME/.local/bin" $path)
 path=("/usr/local/bin" $path)
-path=("/usr/local/go/bin" $path)
-path=("opt/homebrew/bin" $path)
-path+=$(go env GOPATH)/bin
+path+=$HOME/go/bin
 path+=$HOME/.docker/bin
 
-eval "$(/opt/homebrew/bin/mise activate zsh --shims)"
+# mise shims for non-interactive shells; interactive activation lives in .zshrc
+path=("$HOME/.local/share/mise/shims" $path)
 
 export BUN_INSTALL="$HOME/.bun"
 path=("$BUN_INSTALL/bin" $path)
