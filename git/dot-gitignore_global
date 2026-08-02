@@ -18,3 +18,4 @@ Thumbs.db
 # resilio sync
 .sync/
 Icon?
+**/.claude/settings.local.json

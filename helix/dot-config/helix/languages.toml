@@ -1,15 +1,3 @@
-# astro
-
-[language-server.astro-ls]
-command = "astro-ls"
-args = ["--stdio"]
-config = {typescript = {tsdk = "/Users/josh/.asdf/shims/typescript-language-server"}, environment = "node"}
-
-[[language]]
-name = "astro"
-auto-format = true
-language-servers = [ "astro-ls" ]
-
 # go
 
 [[language]]
@@ -37,9 +25,15 @@ name = "javascript"
 formatter = { command = 'prettier', args = ["--parser", "typescript"] }
 auto-format = true
 
-[[language]]
-name = "json"
-formatter = { command = 'prettier', args = ["--parser", "json"] }
+# [[language]]
+# name = "json"
+# formatter = { command = 'prettier', args = ["--parser", "json"] }
+# auto-format = true
+
+[language-server.tailwindcss-ls]
+command = "tailwindcss-language-server"
+args = ["--stdio"]
+config = { userLanguages = { templ = "html" } }
 
 [[language]]
 name = "templ"
@@ -48,7 +42,7 @@ file-types = ["templ"]
 roots = ["go.work", "go.mod"]
 comment-token = "//"
 indent = { tab-width = 4, unit = "    " }
-language-servers = [ "templ" ]
+language-servers = [ "templ", "tailwindcss-ls" ]
 auto-format = true
 
 [[grammar]]

@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+# Ask for the directory
+# echo "Enter the directory to match:"
+# read directory
+
+# echo "Enter the directory to copy from:"
+# read copydir
+
+copydir="/Volumes/Untitled/DCIM/100_FUJI"
+directory="/Volumes/friday/photos/raw/2023/2023-11"
+
+# Check if the directory exists
+if [ -d "$directory" ]; then
+  # for each file name in the directory, find a matching name in copydir
+  for file in "$directory"/*; do
+    # get the file name
+    filename=$(basename "$file" | cut -d'-' -f2 | cut -d'.' -f1)
+    # get the prefix of the filename before the dash
+    prefix=$(basename "$file" | cut -d'-' -f1)
+    # find the file in copydir
+    copyfile=$(find "$copydir" -name "$filename.JPG")
+    # if the file exists, copy it to a new folder on the desktop
+    if [ -f "$copyfile" ]; then
+      echo "Copying $copyfile"
+      cp "$copyfile" "$directory/$prefix-$filename.JPG"
+    else
+      echo "File $filename does not exist in $copydir"
+    fi
+  done
+else
+  echo "Directory $directory does not exist"
+fi

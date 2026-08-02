@@ -2,5 +2,8 @@
 .zshrc.local
 Brewfile.lock.json
 
+# karabiner writes timestamped backups here
+karabiner/dot-config/karabiner/automatic_backups/
+
 # TODO: move private info in espanso to separate file
 espanso
