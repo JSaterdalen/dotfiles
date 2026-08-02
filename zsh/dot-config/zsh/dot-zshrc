@@ -27,8 +27,11 @@ if [[ $(command -v brew) ]]; then
   FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 fi
 
+# sf CLI completions: cache the (static) setup line once instead of spawning
+# the Node CLI on every shell start. Refresh with `sf autocomplete --refresh-cache`.
 if [[ $(command -v sf) ]]; then
-  eval $(sf autocomplete script zsh)
+  [[ -f $ZSH_CACHE_DIR/sf.zsh ]] || sf autocomplete script zsh > $ZSH_CACHE_DIR/sf.zsh
+  source $ZSH_CACHE_DIR/sf.zsh
 fi
 
 # bun completions
